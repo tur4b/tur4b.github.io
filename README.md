@@ -1,1 +1,1 @@
-# quTurabqu.github.io
+# Turab Eybaliyev
