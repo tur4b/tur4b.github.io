@@ -5,5 +5,7 @@
 <body>
 	<h1>Hello</h1>
 </body>
+	
+	<hr>
 
 </html>
