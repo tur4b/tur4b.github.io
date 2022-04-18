@@ -9,6 +9,11 @@ a {
 	color: #000;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
 .t-300 {
 	transition: 300ms;
 }
