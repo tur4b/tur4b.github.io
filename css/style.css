@@ -67,7 +67,7 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     --g: 10px;
-    --b: 5px;
+    --b: 6px;
     --c: rgb(52 211 153);
     padding: calc(var(--g) + var(--b));
     --_c: #0000 0 25%, rgb(52 211 153 / 73%) 0 50%;
@@ -77,18 +77,20 @@ body {
     background-size: 200% var(--b), var(--b) 200%;
     cursor: pointer;
     filter: grayscale(90%);
-    transition: .6s;
+    transition: 1s;
+    opacity: 0.8;
 }
 
 .main:hover {
    --_p: 75%;
    filter: grayscale(0%);
+   opacity: 1;
 }
 
 .container {
     height: 600px;
     width: 500px;
-    box-shadow: 0 10px 20px rgb(52 211 153);
+    box-shadow: 0 6px 15px rgb(52 211 153);
     background-size: cover;
     font-family: 'Abel', sans-serif;
 }
@@ -140,6 +142,10 @@ h2 {
     margin-bottom: 10px;
 }
 
+.console {
+    max-width: 460px;
+}
+
 .console header {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -154,7 +160,7 @@ h2 {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-sizing: border-box;
-    padding: 30px;
+    padding: 22px;
     height: calc(100% - 40px);
     background-color: #000;
     color: rgb(52 211 153);
@@ -208,11 +214,37 @@ h2 {
     font-size: 16px;
     letter-spacing: 1.2px;
     font-weight: bold;
+    font-family: 'Abel', sans-serif;
 }
 
 #console-shown {
     color: rgb(207, 199, 38);
 }
+
+.tooltip {
+    position:relative;
+}
+
+.tooltip:before {
+    content: attr(data-text);
+    letter-spacing: 1.2px;
+    position:absolute;
+    bottom:200%;
+    transform:translateY(-50%);
+    margin-left:25px;
+    width:150px;
+    padding:5px;
+    border-radius:10px;
+    background:rgb(52 211 153);
+    color: #000;
+    font-weight: bold;
+    text-align:center;
+    display:none;
+  }
+
+  .tooltip:hover:before {
+    display:block;
+  }
 
 @media screen and (max-width:600px) {
     .container {

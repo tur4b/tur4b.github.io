@@ -21,14 +21,14 @@
 
                     <div class="console">
                         <header>
-                          <p>guest@guest <strong>You are welcome</strong></p>
+                          <p id="console-header"></p>
                         </header>
                         <div class="consolebody">
-                            <p class="space-2">Type @profile, @skills, @social, @clear, @help</p>
+                            <p id="console-commands" class="space-2"></p>
                             <p id="console-shown" class="space-3"></p>
-                            <strong>>> @ </strong><input class="command space-1" type="text" value="" placeholder="Type command" autofocus/>
+                            <strong>>> @ </strong><input id="command-id" class="command space-1 tooltip" type="text" value="" placeholder="" data-text="Hay" autofocus/>
                         </div>
-                        <div id="command-error" class="color-red mg-b-10 hidden">Invalid command!</div>
+                        <div id="command-error" class="color-red mg-b-10 hidden"></div>
                       </div>
                 </div>
             </div>
