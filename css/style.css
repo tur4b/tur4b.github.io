@@ -5,7 +5,7 @@
 }
 
 ul {
-    font-size: 16px;
+    font-size: 18px;
     margin-left: 15px;
 }
 
@@ -33,11 +33,18 @@ a.disabled {
 
 .blue-color:hover {
     color: #0077b5;
-	/*color: #054279;*/
 }
 
 .black-color:hover {
-    color: #000;
+    filter: grayscale(90%);
+}
+
+.space-1 {
+	letter-spacing: 1px;
+}
+
+.space-2 {
+	letter-spacing: 2px;
 }
 
 .space-3 {
@@ -90,7 +97,6 @@ body {
     height: 100%;
     width: 100%;
     top: 0;
-    /* background: linear-gradient(to top, rgba(28, 171, 238, 0.7), rgba(253, 252, 252, 0.21)); */
     background: linear-gradient(to top, rgba(1, 1, 1, 0.7), black);
     color: rgb(52 211 153);
 }
@@ -98,7 +104,6 @@ body {
 .content {
     bottom: 0;
     position: absolute;
-    /* margin-bottom: 10px; */
     padding: 20px;
 }
 
@@ -107,7 +112,6 @@ h2 {
 }
 
 .content p {
-	font-size: 20px;
 	font-weight: 400;
 	margin-bottom: 10px;
 }
@@ -128,18 +132,78 @@ h2 {
     color: rgb(185, 206, 224);
 }
 
+.mg-b-20 {
+    margin-bottom: 20px;
+}
+
+.mg-b-10 {
+    margin-bottom: 10px;
+}
+
+.console header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #343333;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: rgb(52 211 153);
+}
+  
+.console .consolebody {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-sizing: border-box;
+    padding: 30px;
+    height: calc(100% - 40px);
+    background-color: #000;
+    color: rgb(52 211 153);
+}
+
+.console .consolebody p {
+    line-height: 1rem;
+}
+
+.command{
+    background-color: transparent;
+    color:rgb(98, 196, 160);
+    border-style: none;
+    font-size: 16px;
+    caret-color: rgb(98, 196, 160);
+    opacity: 0.8;
+}
+
+.command:focus {
+    outline: none;
+}
+
 .icons {
     display: inline;
+    margin-left: 20px;
 }
 
 .icons i {
-    font-size: 25px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-bottom: 20px;
     color: rgb(98, 196, 160);
     transition: 0.3s;
-	padding: 50px 20px 0 0;
+	padding: 0 20px 0 0;
+    transform: translate(-25%, -25%);
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.color-red {
+    color: rgb(225, 86, 86);
+}
+
+::placeholder {
+    background-color: transparent;
+    color:rgb(98, 196, 160);
+    /* font-size: 16px; */
+}
 
 @media screen and (max-width:600px) {
     .container {

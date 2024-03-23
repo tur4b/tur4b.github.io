@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/script.js"></script>
     <title>Turab Eybaliyev</title>
 </head>
 
@@ -15,37 +16,20 @@
         <div class="container">
             <div class="gradient">
                 <div class="content">
-                    <h2 class="space-5">Turab Eybaliyev</h2>
-                    <p class="space-3">
-                        Java Developer
-                    <br>
 
-                    <span class="space-3">🌱 I’m currently learning <strong>Design Patterns</strong></span> <br/>
-                    <span class="space-3">💬 Ask me about <strong>Java, Spring Framework</strong></span>
-                    <br/><br/>
+                    <div class="data"></div>
 
-                    <h3 class="space-3" align="left">Languages and Tools:</h3>
-                    <br/>
-                    <ul align="left"> 
-                        <li>JAVA</li>
-                        <li>Spring framework (---> Core, Boot, MVC, Data JPA, Security)</li>
-                        <li>OOP
-                        <li>Design Patterns</li>
-                        <li>Algorithms and Data Structures</li>
-                        <li>Rest and Soap</li>
-                        <li>Apache Kafka and RabbitMQ</li>
-                        <li>OAuth2</li>
-                        <li>JUnit, Mockito</li>
-                        <li>MySQL</li>
-                        <li>Maven, Gradle</li>
-                        <li>Intellij Idea</li>
-                    </ul>
-                
-                    <div class="icons">
-                        <a href="https://github.com/quTurabqu" target="_blank"><i class="fa fa-github black-color t-300" aria-hidden="true"></i></a>
-                        <a href="https://stackoverflow.com/users/8747039/turab" target="_blank"><i class="fa fa-stack-overflow orange-color t-300" aria-hidden="true"></i></a>
-                        <a href="https://www.linkedin.com/in/turab-eybaliyev-aa313216a" target="_blank"><i class="fa fa-linkedin blue-color t-300" aria-hidden="true"></i></a>
-                    </div>
+                    <div class="console">
+                        <header>
+                          <p>guest@guest <strong>You are welcome</strong></p>
+                        </header>
+                        <div class="consolebody">
+                            <p class="space-2">Type @profile, @skills, @social, @clear, @help</p>
+                            <p id="console-shown" class="space-3"></p>
+                            <strong>>> @ </strong><input class="command space-1" type="text" value="" placeholder="Type command" autofocus/>
+                        </div>
+                        <div id="command-error" class="color-red space-1 mg-b-10 hidden">Invalid command!</div>
+                      </div>
                 </div>
             </div>
         </div>
