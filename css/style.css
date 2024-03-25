@@ -277,7 +277,7 @@ h2 {
 /* ********************** keyframes ********************* */
 
 .bounce {
-    animation: bounce 2s ease infinite;
+    animation: bounce 2s ease;
 }
 
 @keyframes bounce {
