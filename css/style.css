@@ -273,3 +273,29 @@ h2 {
         margin-bottom: 10px;
     }
 }
+
+/* ********************** keyframes ********************* */
+
+.bounce {
+    animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+    30% { transform: scale(1.1); }
+    40%, 60% { transform: rotate(-10deg) scale(1.1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+    70% { transform: rotate(0deg) scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+.hinge {
+    animation: hinge 2s ease;
+}
+@keyframes hinge {
+    0% { transform: rotate(0); transform-origin: top left; animation-timing-function: ease-in-out; }  
+    20%, 60% { transform: rotate(30deg); transform-origin: top left; animation-timing-function: ease-in-out; }  
+    40% { transform: rotate(15deg); transform-origin: top left; animation-timing-function: ease-in-out; } 
+    80% { transform: rotate(15deg) translateY(0); opacity: 0.5; transform-origin: top left; animation-timing-function: ease-in-out; } 
+    100% { transform: translateY(200px); opacity: 0; visibility: hidden;}
+}

@@ -1,5 +1,4 @@
-
-var lang = 'az';
+var lang = 'en';
 
 const DATA = {
     "en": {
@@ -13,6 +12,7 @@ const DATA = {
                 "help": "<strong>help</strong> is shown",
                 "clear": "<strong>clear</strong> was called",
                 "lang": "<strong>dil dəyişmə</strong> çağırıldı ('az'-a dəyişildi)",
+                "bounce": "<strong>make it bouce</strong> was called",
                 "github": "<strong>Github page</strong> was opened",
                 "linkedin": "<strong>Linkedin page</strong> was opened"
             },
@@ -57,6 +57,10 @@ const DATA = {
                 "cmd": "help",
                 "message": "<strong>@help - </strong> show all commands"
             },
+            "bounce": {
+                "cmd": "bounce",
+                "message": "<strong>@bounce - </strong> make it bounce"
+            },
             "github": {
                 "cmd": "github",
                 "message": "<strong>@github - </strong> go to my github page"
@@ -78,6 +82,7 @@ const DATA = {
                 "help": "<strong>kömək</strong> göstərilir",
                 "clear": "<strong>təmizlə</strong> çağırıldı",
                 "lang": "<strong>language change</strong> was called (changed to 'en')",
+                "bounce": "<strong>bounce</strong> çağırıldı",
                 "github": "<strong>Github səhifəsi</strong> açıldı",
                 "linkedin": "<strong>Linkedin səhifəsi</strong> açıldı"
             },
@@ -121,6 +126,10 @@ const DATA = {
             "help": {
                 "cmd": "kömək",
                 "message": "@kömək - </strong> bütün əmrləri göstər"
+            },
+            "bounce": {
+                "cmd": "bounce",
+                "message": "<strong>@bounce - </strong> bounce"
             },
             "github": {
                 "cmd": "github",
@@ -189,6 +198,7 @@ function allCommandsContent() {
     "<li>" + DATA[lang].commands.social.message + "</li>" +
     "<li>" + DATA[lang].commands.clear.message + "</li>" +
     "<li>" + DATA[lang].commands.lang.message + "</li>" +
+    "<li>" + DATA[lang].commands.bounce.message + "</li>" +
     "<li>" + DATA[lang].commands.help.message + "</li>" +
     "</ul>" +
     "    <br/>" + 
@@ -205,7 +215,6 @@ window.onload=function(){
 
     init();
 
-    var menuIdx = 0;
     const consoleShown = document.getElementById('console-shown');
     const commandError = document.getElementById("command-error");
     const commandInput = document.getElementsByClassName("command")[0];
@@ -236,8 +245,14 @@ window.onload=function(){
             consoleShown.innerHTML = DATA[lang].console.info.social;
         }
         else if(cmd === DATA[lang].commands.clear.cmd) {
-            contentData.innerHTML = '';
-            consoleShown.innerHTML = DATA[lang].console.info.clear;
+            if(contentData.innerHTML != '') {
+                contentData.classList.add('hinge');
+                setTimeout(() => {
+                    contentData.classList.remove('hinge');
+                    contentData.innerHTML = '';
+                    consoleShown.innerHTML = DATA[lang].console.info.clear;
+                }, 2000);
+            }
         }
         else if(cmd === DATA[lang].commands.lang.cmd) {
             contentData.innerHTML = '';
@@ -253,6 +268,16 @@ window.onload=function(){
         else if(cmd === DATA[lang].commands.help.cmd) {
             contentData.innerHTML = allCommandsContent();
             consoleShown.innerHTML = DATA[lang].console.info.help;
+        }
+        else if(cmd === DATA[lang].commands.bounce.cmd) {
+            consoleShown.innerHTML = DATA[lang].console.info.bounce;
+            // make it bouce
+            const dataDiv = document.getElementsByClassName('data')[0];
+            dataDiv.classList.add('bounce');
+
+            setTimeout(() => {
+                dataDiv.classList.remove('bounce');
+            }, 2000);
         }
         else if(cmd === DATA[lang].commands.github.cmd) {
             consoleShown.innerHTML = DATA[lang].console.info.github;
@@ -276,6 +301,7 @@ window.onload=function(){
 
 
     function init() {
+        const console = document.getElementsByClassName('console')[0];
         const consoleHeader = document.getElementById('console-header');
         const consoleCommands = document.getElementById('console-commands');
         const consoleCommand = document.getElementById('command-id');
@@ -283,6 +309,16 @@ window.onload=function(){
         consoleHeader.innerHTML = DATA[lang].console.header;
         consoleCommands.innerHTML = DATA[lang].console.commands;
         consoleCommand.placeholder = DATA[lang].commands.placeholder;
+
+        // check if input is focused or not
+        setInterval(() => {
+            if(document.activeElement === consoleCommand) {
+                console.classList.remove('bounce');
+            }
+            else {
+                console.classList.add('bounce');
+            }
+        }, 2000);
     }
 
 }
