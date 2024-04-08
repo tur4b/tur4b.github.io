@@ -22,7 +22,7 @@ const DATA = {
         },
         "profile": {
             "profession": "Java Developer",
-            "learning": "🌱 I’m currently learning <strong>Design Patterns",
+            "learning": "🌱 I’m currently learning <strong>Microservices",
             "askme": "💬 You can ask me about <strong>Java and Spring Framework</strong>"
         },
         "skills": {
@@ -92,7 +92,7 @@ const DATA = {
         },
         "profile": {
             "profession": "Java Proqramçı",
-            "learning": "🌱 Hal-hazırda <strong>Dizayn qəlblərini</strong> öyrənirəm",
+            "learning": "🌱 Hal-hazırda <strong>Mikroservis arxitekturasını</strong> öyrənirəm",
             "askme": "💬 <strong>Java və Spring framework-u</strong> haqqında məndən soruşa bilərsən"
         },
         "skills": {
@@ -171,6 +171,7 @@ function skillsContent() {
     "<li>Hibernate</li>" +
     "<li>MySQL, Oracle</li>" +
     "<li>JUnit, Mockito</li>" + 
+    "<li>Microservices (I am learning)</li>" +
     "<li>Swagger, Prometheus, Zipkin, Grafana</li>" +
     "<li>Html/Css/Js</li>" +
     "<li>Maven, Gradle</li>" + 
