@@ -22,6 +22,7 @@ const DATA = {
         },
         "profile": {
             "profession": "Java Developer",
+            "status": "⚒️ Working",
             "learning": "🌱 I’m currently learning <strong>Microservices",
             "askme": "💬 You can ask me about <strong>Java and Spring Framework</strong>"
         },
@@ -92,6 +93,7 @@ const DATA = {
         },
         "profile": {
             "profession": "Java Proqramçı",
+            "status": "⚒️ İşləyirəm",
             "learning": "🌱 Hal-hazırda <strong>Mikroservis arxitekturasını</strong> öyrənirəm",
             "askme": "💬 <strong>Java və Spring framework-u</strong> haqqında məndən soruşa bilərsən"
         },
