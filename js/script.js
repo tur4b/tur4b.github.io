@@ -151,6 +151,7 @@ function profileContent() {
     "<p class=\"space-3\">" + DATA[lang].profile.profession +
     "<br><br>" +
     
+    "<span class=\"space-3\">" + DATA[lang].profile.status + "</span> <br/>" + 
     "<span class=\"space-3\">" + DATA[lang].profile.learning + "</span> <br/>" + 
     "<span class=\"space-3\">" + DATA[lang].profile.askme + "</span>" +
     "<br/><br/>" + 
@@ -165,9 +166,9 @@ function skillsContent() {
     "<ul align=\"left\">" +
     "<li>JAVA (8, 11, 17, 21)</li>" +
     "<li>Spring framework (Core, Boot, MVC, Data JPA, Security)</li>" +
-    "<li>OOP, SOLID, Design Patterns</li>" +
+    "<li>OOP, Design Patterns</li>" +
     "<li>Algorithms and Data Structures</li>" +
-    "<li>Rest and Soap</li>" +
+    "<li>REST and SOAP</li>" +
     "<li>Apache Kafka and RabbitMQ</li>" +
     "<li>OAuth2</li>" +
     "<li>Hibernate</li>" +
