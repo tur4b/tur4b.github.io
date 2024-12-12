@@ -164,21 +164,21 @@ function skillsContent() {
     "    <h3 class=\"space-3\" align=\"left\">" + DATA[lang].skills.header + "</h3>" + 
     "    <br/>" + 
     "<ul align=\"left\">" +
-    "<li>JAVA (8, 11, 17, 21)</li>" +
-    "<li>Spring framework (Core, Boot, MVC, Data JPA, Security)</li>" +
-    "<li>OOP, Design Patterns</li>" +
-    "<li>Algorithms and Data Structures</li>" +
-    "<li>REST and SOAP</li>" +
-    "<li>Apache Kafka and RabbitMQ</li>" +
-    "<li>OAuth2</li>" +
-    "<li>Hibernate</li>" +
-    "<li>MySQL, Oracle</li>" +
-    "<li>JUnit, Mockito</li>" + 
-    "<li>Microservices (I am learning)</li>" +
-    "<li>Swagger, Prometheus, Zipkin, Grafana</li>" +
-    "<li>Html/Css/Js</li>" +
-    "<li>Maven, Gradle</li>" + 
-    "<li>Intellij Idea</li>" + 
+    "<li><a>JAVA (8, 11, 17, 21)</a></li>" +
+    "<li><a>Spring framework (Core, Boot, MVC, Data JPA, Security)</a></li>" +
+    "<li><a>OOP, Design Patterns</a></li>" +
+    "<li><a>Algorithms and Data Structures</a></li>" +
+    "<li><a>REST and SOAP</a></li>" +
+    "<li>Apache Kafka and RabbitMQ</a></li>" +
+    "<li><a>OAuth2</a></li>" +
+    "<li><a>Hibernate</a></li>" +
+    "<li><a>MySQL, Oracle</a></li>" +
+    "<li><a>JUnit, Mockito</a></li>" + 
+    "<li><a>Microservices (I am learning)</a></li>" +
+    "<li><a>Swagger, Prometheus, Zipkin, Grafana</a></li>" +
+    "<li><a>Html/Css/Js</a></li>" +
+    "<li><a>Maven, Gradle</a></li>" + 
+    "<li><a>Intellij Idea</a></li>" + 
     "</ul>" +
     "</div>";
     return skills;        
@@ -188,7 +188,7 @@ function socialContent() {
     const social = "<div class=\"icons mg-b-20\">" +
     "<a href=\"https://github.com/tur4b\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Github\"><i class=\"fa fa-github black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
     "<a href=\"https://stackoverflow.com/users/8747039/turab\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Stackoverflow\"><i class=\"fa fa-stack-overflow orange-color t-300\" aria-hidden=\"true\"></i></span></a>" +
-    "<a href=\"https://www.linkedin.com/in/turab-eybaliyev-aa313216a\" target=\"_blank\"><span class=\"tooltip\" data-text=\"LinkedIn\"><i class=\"fa fa-linkedin blue-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+    "<a href=\"https://www.linkedin.com/in/turab-eybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"LinkedIn\"><i class=\"fa fa-linkedin blue-color t-300\" aria-hidden=\"true\"></i></span></a>" +
     "</div>";
     return social;        
 }
@@ -286,13 +286,13 @@ window.onload=function(){
         else if(cmd === DATA[lang].commands.github.cmd) {
             consoleShown.innerHTML = DATA[lang].console.info.github;
             setTimeout(() => {
-                window.open('https://github.com/quTurabqu', '_blank');
+                window.open('https://github.com/tur4b', '_blank');
             }, "1000");
         }
         else if(cmd === DATA[lang].commands.linkedin.cmd) {
             consoleShown.innerHTML = DATA[lang].console.info.linkedin;
             setTimeout(() => {
-                window.open('https://www.linkedin.com/in/turab-eybaliyev-aa313216a', '_blank');
+                window.open('https://www.linkedin.com/in/turab-eybaliyev', '_blank');
             }, "1000");
         }
         else {
