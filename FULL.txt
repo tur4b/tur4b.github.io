@@ -8,18 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/script.js"></script>
-    <title>Turab Eybaliyev</title>
+    <title>Tur4b</title>
 </head>
 
 <body>
+
+<div class="left-panel">
+	<div class="infrastructure">
+</div>
+
+
     <div class="main">
+
         <div class="container">
             <div class="gradient">
                 <div class="content">
-
                     <div class="data"></div>
-
-                    <div class="console bounce">
+<div class="console bounce">
                         <header>
                           <p id="console-header"></p>
                         </header>
@@ -32,26 +37,28 @@
                       </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 </body>
 
 </html>
-
-
-------------------------------------
+-----------------------------------------------------
 
 var lang = 'en';
 
 const DATA = {
     "en": {
+	"infrastructure" : {
+		"code":   "interface <span class=\"hljs-special\">DeveloperTraits</span> {\n  boolean isCurious();\n  boolean isProblemSolver();\n  boolean lovesCleanCode();\n}\n\nabstract class <span class=\"hljs-special\">Developer</span> implements <span class=\"hljs-special\">DeveloperTraits</span> {\n  final String fullName;\n\n  Developer(String fullName) {\n    this.fullName = fullName;\n  }\n}\n\nfinal class <span class=\"hljs-special\">Tur4b</span> extends <span class=\"hljs-special\">Developer</span> {\n  private static volatile <span class=\"hljs-special\">Tur4b</span> instance;\n\n  private <span class=\"hljs-special\">Tur4b</span>() {\n    super(\"Turab Eybaliyev\");\n  }\n\n  public static <span class=\"hljs-special\">Tur4b</span> getInstance() {\n    if (instance == null) {\n      synchronized (<span class=\"hljs-special\">Tur4b</span>.class) {\n        if (instance == null) {\n          instance = new <span class=\"hljs-special\">Tur4b</span>();\n        }\n      }\n    }\n    return instance;\n  }\n\n  public boolean isCurious() { return true; }\n  public boolean isProblemSolver() { return true; }\n  public boolean lovesCleanCode() { return true; }\n}"
+},
         "console": {
-            "header": "guest@guest <strong>You are welcome</strong>",
-            "commands": "Type @profile, @skills, @social, @clear, @lang, @help",
+            "header": "tur4b@test <strong>You are welcome</strong>",
+            "commands": "Type @profile, @skills, @clear, @lang, @help",
             "info": {
                 "profile": "<strong>profile</strong> is shown",
                 "skills": "<strong>skills</strong> is shown",
-                "social": "<strong>social</strong> is shown",
                 "help": "<strong>help</strong> is shown",
                 "clear": "<strong>clear</strong> was called",
                 "lang": "<strong>dil dəyişmə</strong> çağırıldı ('az'-a dəyişildi)",
@@ -70,7 +77,6 @@ const DATA = {
         "skills": {
             "header": "Programming Knowledge"
         },
-        "social": {},
         "commands": {
             "header": "All commands",
             "headerAdditional": "Additional commands",
@@ -189,13 +195,10 @@ function profileContent() {
     </div>`;
 }
 
-function escapeHtml(text) {
-    return text
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+function infrastructureContent() {
+    return `<div class="profile mg-b-20">
+        <pre class="code-block"><code class="language-java">${DATA[lang].infrastructure.code}</code></pre>
+    </div>`;
 }
 
 function skillsContent() {
@@ -262,7 +265,7 @@ window.onload=function(){
     const commandError = document.getElementById("command-error");
     const commandInput = document.getElementsByClassName("command")[0];
     const contentData = document.getElementsByClassName("data")[0];
-    
+
     // set all commands as default
     contentData.innerHTML = socialContent();
     
@@ -353,6 +356,9 @@ window.onload=function(){
         consoleCommands.innerHTML = DATA[lang].console.commands;
         consoleCommand.placeholder = DATA[lang].commands.placeholder;
 
+    	const infrastructure = document.getElementsByClassName("infrastructure")[0];
+	infrastructure.innerHTML = infrastructureContent();
+
         // check if input is focused or not
         setInterval(() => {
             if(document.activeElement === consoleCommand) {
@@ -366,8 +372,7 @@ window.onload=function(){
 
 }
 
--------------------------------------------------
-
+--------------------------------------------------------------------------------------
 * {
     padding: 0;
     margin: 0;
@@ -433,7 +438,7 @@ body {
 
 .main {
     top: 50%;
-    left: 50%;
+    left: 60%;
     position: absolute;
     transform: translate(-50%, -50%);
     --g: 10px;
@@ -450,6 +455,19 @@ body {
     transition: 1s;
     opacity: 0.8;
 }
+
+.left-panel {
+    margin: 10px;
+    padding: 5px;
+    width: 500px;
+    /*height: 600px;*/
+    box-shadow: 0 6px 15px rgb(52 211 153);
+    background-size: cover;
+    font-family: 'Abel', sans-serif;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
 
 .main:hover {
    --_p: 75%;
@@ -513,7 +531,10 @@ h2 {
 }
 
 .console {
-    max-width: 460px;
+    /*position: relative;*/
+   /* top: 50%;          
+    left: 0;           
+    width: auto;*/
 }
 
 .console header {
@@ -635,13 +656,10 @@ h2 {
     font-weight: bold;
 }
 
-
-
-
 @media screen and (max-width:600px) {
     .container {
         height: 700px;
-        width: 280px;
+        width: 500px;
     }
     h2 {
         font-size: x-large;
@@ -690,5 +708,69 @@ h2 {
     40% { transform: rotate(15deg); transform-origin: top left; animation-timing-function: ease-in-out; } 
     80% { transform: rotate(15deg) translateY(0); opacity: 0.5; transform-origin: top left; animation-timing-function: ease-in-out; } 
     100% { transform: translateY(200px); opacity: 0; visibility: hidden;}
+}
+
+-------------------------------------------------------
+
+interface DeveloperTraits {
+  boolean isCurious();
+  boolean isProblemSolver();
+  boolean lovesCleanCode();
+}
+
+abstract class Developer implements DeveloperTraits {
+  final String name;
+  final List<String> skills;
+  final Map<String, String> contacts;
+
+  Developer(String name, List<String> skills, Map<String, String> contacts) {
+    this.name = name;
+    this.skills = skills;
+    this.contacts = contacts;
+  }
+  
+  protected String profile() {
+      return "asdas";
+  }
+  
+  protected String contact() {
+      return "";
+  }
+  
+  protected String skills() {
+      return "";
+  }
+  
+}
+
+final class Tur4b extends Developer {
+  private static volatile Tur4b instance;
+
+  private Tur4b() {
+    super("Turab Eybaliyev", List.of("Java", "Spring framework", ""));
+  }
+
+  public static Tur4b getInstance() {
+    if (instance == null) {
+      synchronized (Tur4b.class) {
+        if (instance == null) {
+          instance = new Tur4b();
+        }
+      }
+    }
+    return instance;
+  }
+
+  public boolean isCurious() { return true; }
+  public boolean isProblemSolver() { return true; }
+  public boolean lovesCleanCode() { return true; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Tur4b tur4b = Tur4b.getInstance();
+        System.out.println("write your command to proceed");
+        
+    }
 }
 
