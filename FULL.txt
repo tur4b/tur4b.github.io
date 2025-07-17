@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/script.js"></script>
+    <title>Turab Eybaliyev</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="gradient">
+                <div class="content">
+
+                    <div class="data"></div>
+
+                    <div class="console bounce">
+                        <header>
+                          <p id="console-header"></p>
+                        </header>
+                        <div class="consolebody">
+                            <p id="console-commands" class="space-2"></p>
+                            <p id="console-shown" class="space-3"></p>
+                            <strong>>> @ </strong><input id="command-id" class="command space-1" type="text" value="" placeholder=""/>
+                        </div>
+                        <div id="command-error" class="color-red mg-b-10 hidden"></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+------------------------------------
+
+var lang = 'en';
+
+const DATA = {
+    "en": {
+        "console": {
+            "header": "guest@guest <strong>You are welcome</strong>",
+            "commands": "Type @profile, @skills, @social, @clear, @lang, @help",
+            "info": {
+                "profile": "<strong>profile</strong> is shown",
+                "skills": "<strong>skills</strong> is shown",
+                "social": "<strong>social</strong> is shown",
+                "help": "<strong>help</strong> is shown",
+                "clear": "<strong>clear</strong> was called",
+                "lang": "<strong>dil dəyişmə</strong> çağırıldı ('az'-a dəyişildi)",
+                "bounce": "<strong>make it bouce</strong> was called",
+                "github": "<strong>Github page</strong> was opened",
+                "linkedin": "<strong>Linkedin page</strong> was opened"
+            },
+            "error": {
+                "message": "Invalid command. Type @help for help"
+            }
+        },
+        "profile": {
+	          "details": "interface <span class=\"hljs-special\">DeveloperTraits</span> {\n  boolean isCurious();\n  boolean isProblemSolver();\n  boolean lovesCleanCode();\n}\n\nabstract class <span class=\"hljs-special\">Developer</span> implements <span class=\"hljs-special\">DeveloperTraits</span> {\n  final String fullName;\n\n  Developer(String fullName) {\n    this.fullName = fullName;\n  }\n}\n\nfinal class <span class=\"hljs-special\">Tur4b</span> extends <span class=\"hljs-special\">Developer</span> {\n  private static volatile <span class=\"hljs-special\">Tur4b</span> instance;\n\n  private <span class=\"hljs-special\">Tur4b</span>() {\n    super(\"Turab Eybaliyev\");\n  }\n\n  public static <span class=\"hljs-special\">Tur4b</span> getInstance() {\n    if (instance == null) {\n      synchronized (<span class=\"hljs-special\">Tur4b</span>.class) {\n        if (instance == null) {\n          instance = new <span class=\"hljs-special\">Tur4b</span>();\n        }\n      }\n    }\n    return instance;\n  }\n\n  public boolean isCurious() { return true; }\n  public boolean isProblemSolver() { return true; }\n  public boolean lovesCleanCode() { return true; }\n}"
+                   },
+
+        "skills": {
+            "header": "Programming Knowledge"
+        },
+        "social": {},
+        "commands": {
+            "header": "All commands",
+            "headerAdditional": "Additional commands",
+            "placeholder": "Type command",
+            "profile": {
+                "cmd": "profile",
+                "message": "<strong>@profile - </strong> show about me"
+            },
+            "skills": {
+                "cmd": "skills",
+                "message": "<strong>@skills - </strong> show my programming skills"
+            },
+            "social": {
+                "cmd": "social",
+                "message": "<strong>@social - </strong> show my social-media"
+            },
+            "clear": {
+                "cmd": "clear",
+                "message": "<strong>@clear - </strong> clear content"
+            },
+            "lang": {
+                "cmd": "lang",
+                "message": "<strong>@lang - </strong> change language (2 languages exist)"
+            },
+            "help": {
+                "cmd": "help",
+                "message": "<strong>@help - </strong> show all commands"
+            },
+            "bounce": {
+                "cmd": "bounce",
+                "message": "<strong>@bounce - </strong> make it bounce"
+            },
+            "github": {
+                "cmd": "github",
+                "message": "<strong>@github - </strong> go to my github page"
+            },
+            "linkedin": {
+                "cmd": "linkedin",
+                "message": "<strong>@linkedin - </strong> go to my linkedin page"
+            }
+        }
+    },
+    "az": {
+        "console": {
+            "header": "qonaq@qonaq <strong>Xoş gəlmisiniz</strong>",
+            "commands": "Yaz @profil, @bacarıqlar, @sosial, @təmizlə, @dil, @kömək",
+            "info": {
+                "profile": "<strong>profil</strong> göstərilir",
+                "skills": "<strong>bacarıqlar</strong> göstərilir",
+                "social": "<strong>sosial-media</strong> göstərilir",
+                "help": "<strong>kömək</strong> göstərilir",
+                "clear": "<strong>təmizlə</strong> çağırıldı",
+                "lang": "<strong>language change</strong> was called (changed to 'en')",
+                "bounce": "<strong>bounce</strong> çağırıldı",
+                "github": "<strong>Github səhifəsi</strong> açıldı",
+                "linkedin": "<strong>Linkedin səhifəsi</strong> açıldı"
+            },
+            "error": {
+                "message": "Düzgün olmayan əmr. Yaz @kömək kömək üçün"
+            }
+        },
+        "profile": {
+	          "details": "interface <span class=\"hljs-special\">DeveloperTraits</span> {\n  boolean isCurious();\n  boolean isProblemSolver();\n  boolean lovesCleanCode();\n}\n\nabstract class <span class=\"hljs-special\">Developer</span> implements <span class=\"hljs-special\">DeveloperTraits</span> {\n  final String fullName;\n\n  Developer(String fullName) {\n    this.fullName = fullName;\n  }\n}\n\nfinal class <span class=\"hljs-special\">Tur4b</span> extends <span class=\"hljs-special\">Developer</span> {\n  private static volatile <span class=\"hljs-special\">Tur4b</span> instance;\n\n  private <span class=\"hljs-special\">Tur4b</span>() {\n    super(\"Turab Eybaliyev\");\n  }\n\n  public static <span class=\"hljs-special\">Tur4b</span> getInstance() {\n    if (instance == null) {\n      synchronized (<span class=\"hljs-special\">Tur4b</span>.class) {\n        if (instance == null) {\n          instance = new <span class=\"hljs-special\">Tur4b</span>();\n        }\n      }\n    }\n    return instance;\n  }\n\n  public boolean isCurious() { return true; }\n  public boolean isProblemSolver() { return true; }\n  public boolean lovesCleanCode() { return true; }\n}"
+                   },
+        "skills": {
+            "header": "Proqramlaşdırma biliklərim"
+        },
+        "social": {},
+        "commands": {
+            "header": "Bütün əmrlər",
+            "headerAdditional": "Əlavə əmrlər",
+            "placeholder": "Əmri yaz",
+            "profile": {
+                "cmd": "profil",
+                "message": "<strong>@profil - </strong> mənim haqqımda göstər"
+            },
+            "skills": {
+                "cmd": "bacarıqlar",
+                "message": "<strong>@bacarıqlar - </strong> proqramlaşdırma biliklərimi göstər"
+            },
+            "social": {
+                "cmd": "sosial",
+                "message": "<strong>@sosial - </strong> sosial-mediyamı göstər"
+            },
+            "clear": {
+                "cmd": "təmizlə",
+                "message": "@təmizlə - </strong> mətni təmizlə"
+            },
+            "lang": {
+                "cmd": "dil",
+                "message": "<strong>@dil - </strong> dili dəyişmək (2 dil mövcuddur)"
+            },
+            "help": {
+                "cmd": "kömək",
+                "message": "@kömək - </strong> bütün əmrləri göstər"
+            },
+            "bounce": {
+                "cmd": "bounce",
+                "message": "<strong>@bounce - </strong> bounce"
+            },
+            "github": {
+                "cmd": "github",
+                "message": "<strong>@github - </strong> github səhifəmə get"
+            },
+            "linkedin": {
+                "cmd": "linkedin",
+                "message": "<strong>@linkedin - </strong> linkedin səhifəmə get"
+            }
+        }
+    }
+};
+
+function profileContent() {
+    return `<div class="profile mg-b-20">
+        <pre class="code-block"><code class="language-java">${DATA[lang].profile.details}</code></pre>
+    </div>`;
+}
+
+function escapeHtml(text) {
+    return text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+}
+
+function skillsContent() {
+    const skills = "<div class=\"skills mg-b-10\">" + 
+    "    <h3 class=\"space-3\" align=\"left\">" + DATA[lang].skills.header + "</h3>" + 
+    "    <br/>" + 
+    "<ul align=\"left\">" +
+    "<li><a>JAVA (8, 11, 17, 21)</a></li>" +
+    "<li><a>Spring framework (Core, Boot, MVC, Data JPA, Security)</a></li>" +
+    "<li><a>OOP, Design Patterns</a></li>" +
+    "<li><a>Algorithms and Data Structures</a></li>" +
+    "<li><a>REST and SOAP</a></li>" +
+    "<li>Apache Kafka and RabbitMQ</a></li>" +
+    "<li><a>OAuth2</a></li>" +
+    "<li><a>Hibernate</a></li>" +
+    "<li><a>MySQL, Oracle</a></li>" +
+    "<li><a>JUnit, Mockito</a></li>" + 
+    "<li><a>Microservices (I am learning)</a></li>" +
+    "<li><a>Swagger, Prometheus, Zipkin, Grafana</a></li>" +
+    "<li><a>Html/Css/Js</a></li>" +
+    "<li><a>Maven, Gradle</a></li>" + 
+    "<li><a>Intellij Idea</a></li>" + 
+    "</ul>" +
+    "</div>";
+    return skills;        
+} 
+
+function socialContent() {
+    const social = "<div class=\"icons mg-b-20\">" +
+    "<a href=\"https://github.com/tur4b\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Github\"><i class=\"fa fa-github black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+    "<a href=\"https://stackoverflow.com/users/8747039/turab\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Stackoverflow\"><i class=\"fa fa-stack-overflow orange-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+    "<a href=\"https://www.linkedin.com/in/turab-eybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"LinkedIn\"><i class=\"fa fa-linkedin blue-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+    "</div>";
+    return social;        
+}
+
+function allCommandsContent() {
+    const allCommands = "<div class=\"mg-b-20\">" + 
+    "    <h3 class=\"space-3\" align=\"left\">" + DATA[lang].commands.header + "</h3>" + 
+    "<ul align=\"left\">" +
+    "<li>" + DATA[lang].commands.profile.message + "</li>" +
+    "<li>" + DATA[lang].commands.skills.message + "</li>" +
+    "<li>" + DATA[lang].commands.social.message + "</li>" +
+    "<li>" + DATA[lang].commands.clear.message + "</li>" +
+    "<li>" + DATA[lang].commands.lang.message + "</li>" +
+    "<li>" + DATA[lang].commands.bounce.message + "</li>" +
+    "<li>" + DATA[lang].commands.help.message + "</li>" +
+    "</ul>" +
+    "    <br/>" + 
+    "    <h3 class=\"space-3\" align=\"left\">" + DATA[lang].commands.headerAdditional + "</h3>" + 
+    "<ul align=\"left\">" +
+    "<li>" + DATA[lang].commands.github.message + "</li>" +
+    "<li>" + DATA[lang].commands.linkedin.message + "</li>" +
+    "</ul>" +
+    "</div>";
+    return allCommands;        
+}
+    
+window.onload=function(){
+
+    init();
+
+    const consoleShown = document.getElementById('console-shown');
+    const commandError = document.getElementById("command-error");
+    const commandInput = document.getElementsByClassName("command")[0];
+    const contentData = document.getElementsByClassName("data")[0];
+    
+    // set all commands as default
+    contentData.innerHTML = socialContent();
+    
+    commandInput.addEventListener('keydown', (event) => {
+        commandError.classList.add('hidden');
+        if (event.key === 'Enter') {
+            processCommand();
+        }
+    });
+
+    function processCommand() {
+        const cmd = commandInput.value;
+        if(cmd === DATA[lang].commands.profile.cmd) {
+            contentData.innerHTML = profileContent();
+            consoleShown.innerHTML = DATA[lang].console.info.profile;
+        }
+        else if(cmd === DATA[lang].commands.skills.cmd) {
+            contentData.innerHTML = skillsContent();
+            consoleShown.innerHTML = DATA[lang].console.info.skills;
+        }
+        else if(cmd === DATA[lang].commands.social.cmd) {
+            contentData.innerHTML = socialContent();
+            consoleShown.innerHTML = DATA[lang].console.info.social;
+        }
+        else if(cmd === DATA[lang].commands.clear.cmd) {
+            if(contentData.innerHTML != '') {
+                contentData.classList.add('hinge');
+                setTimeout(() => {
+                    contentData.classList.remove('hinge');
+                    contentData.innerHTML = '';
+                    consoleShown.innerHTML = DATA[lang].console.info.clear;
+                }, 2000);
+            }
+        }
+        else if(cmd === DATA[lang].commands.lang.cmd) {
+            contentData.innerHTML = '';
+            consoleShown.innerHTML = DATA[lang].console.info.lang;
+            if(lang === 'en') {
+                lang = 'az';
+            }
+            else if(lang === 'az') {
+                lang = 'en';
+            }
+            init();
+        }
+        else if(cmd === DATA[lang].commands.help.cmd) {
+            contentData.innerHTML = allCommandsContent();
+            consoleShown.innerHTML = DATA[lang].console.info.help;
+        }
+        else if(cmd === DATA[lang].commands.bounce.cmd) {
+            consoleShown.innerHTML = DATA[lang].console.info.bounce;
+            // make it bouce
+            const dataDiv = document.getElementsByClassName('data')[0];
+            dataDiv.classList.add('bounce');
+
+            setTimeout(() => {
+                dataDiv.classList.remove('bounce');
+            }, 2000);
+        }
+        else if(cmd === DATA[lang].commands.github.cmd) {
+            consoleShown.innerHTML = DATA[lang].console.info.github;
+            setTimeout(() => {
+                window.open('https://github.com/tur4b', '_blank');
+            }, "1000");
+        }
+        else if(cmd === DATA[lang].commands.linkedin.cmd) {
+            consoleShown.innerHTML = DATA[lang].console.info.linkedin;
+            setTimeout(() => {
+                window.open('https://www.linkedin.com/in/turab-eybaliyev', '_blank');
+            }, "1000");
+        }
+        else {
+            commandError.innerHTML = DATA[lang].console.error.message;
+            commandError.classList.remove('hidden');
+        }
+
+        commandInput.value = '';
+    }
+
+
+    function init() {
+        const console = document.getElementsByClassName('console')[0];
+        const consoleHeader = document.getElementById('console-header');
+        const consoleCommands = document.getElementById('console-commands');
+        const consoleCommand = document.getElementById('command-id');
+
+        consoleHeader.innerHTML = DATA[lang].console.header;
+        consoleCommands.innerHTML = DATA[lang].console.commands;
+        consoleCommand.placeholder = DATA[lang].commands.placeholder;
+
+        // check if input is focused or not
+        setInterval(() => {
+            if(document.activeElement === consoleCommand) {
+                console.classList.remove('bounce');
+            }
+            else {
+                console.classList.add('bounce');
+            }
+        }, 2000);
+    }
+
+}
+
+-------------------------------------------------
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+span {
+    font-size: 18px;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(52 211 153);
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.t-300 {
+	transition: 300ms;
+}
+
+.orange-color:hover {
+	color: #f98223;
+}
+
+.blue-color:hover {
+    color: #0077b5;
+}
+
+.black-color:hover {
+    filter: grayscale(90%);
+}
+
+.space-1 {
+	letter-spacing: 1px;
+}
+
+.space-2 {
+	letter-spacing: 2px;
+}
+
+.space-3 {
+	letter-spacing: 3px;
+}
+
+.space-5 {
+	letter-spacing: 5px;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right bottom, black, #090909);
+}
+
+.main {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    --g: 10px;
+    --b: 6px;
+    --c: rgb(52 211 153);
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, rgb(52 211 153 / 73%) 0 50%;
+    --_g1: repeating-linear-gradient(69deg, var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg, var(--_c)) repeat-y;
+    background: var(--_g1) var(--_p, 25%) 0, var(--_g2) 0 var(--_p, 125%), var(--_g1) var(--_p, 125%) 100%, var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b), var(--b) 200%;
+    cursor: pointer;
+    filter: grayscale(90%);
+    transition: 1s;
+    opacity: 0.8;
+}
+
+.main:hover {
+   --_p: 75%;
+   filter: grayscale(0%);
+   opacity: 1;
+}
+
+.container {
+    height: 600px;
+    width: 500px;
+    box-shadow: 0 6px 15px rgb(52 211 153);
+    background-size: cover;
+    font-family: 'Abel', sans-serif;
+}
+
+.gradient {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(to top, rgba(1, 1, 1, 0.7), black);
+    color: rgb(52 211 153);
+}
+
+.content {
+    bottom: 0;
+    position: absolute;
+    padding: 10px;
+}
+
+h2 {
+    font-size: xx-large;
+}
+
+.content p {
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+.job-status {
+	font-weight: 400;
+	font-style: italic;
+	padding: 3px 5px 5px 0;
+	margin-bottom: 20px;
+	margin-top: 50px;
+	background-color: black;
+	border-radius: 3px;
+	color: rgb(52 211 153);
+}
+
+.details {
+    font-style: italic;
+    color: rgb(185, 206, 224);
+}
+
+.mg-b-20 {
+    margin-bottom: 20px;
+}
+
+.mg-b-10 {
+    margin-bottom: 10px;
+}
+
+.console {
+    max-width: 460px;
+}
+
+.console header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #343333;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: rgb(52 211 153);
+}
+  
+.console .consolebody {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-sizing: border-box;
+    padding: 20px;
+    height: calc(100% - 50px);
+    background-color: #000;
+    color: rgb(52 211 153);
+}
+
+.console .consolebody p {
+    line-height: 1rem;
+}
+
+.command{
+    background-color: transparent;
+    color:rgb(98, 196, 160);
+    border-style: none;
+    font-size: 16px;
+    caret-color: rgb(98, 196, 160);
+    opacity: 0.8;
+}
+
+.command:focus {
+    outline: none;
+}
+
+.icons {
+    display: inline;
+    margin-left: 20px;
+}
+
+.icons i {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: rgb(98, 196, 160);
+    transition: 0.3s;
+	padding: 0 20px 0 0;
+    transform: translate(-25%, -25%);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.color-red {
+    color: rgb(207, 38, 38);
+}
+
+::placeholder {
+    background-color: transparent;
+    color:rgb(98, 196, 160);
+}
+
+#command-error {
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    font-weight: bold;
+    font-family: 'Abel', sans-serif;
+}
+
+#console-shown {
+    color: rgb(207, 199, 38);
+}
+
+.tooltip {
+    position:relative;
+}
+
+.tooltip:before {
+    content: attr(data-text);
+    letter-spacing: 1.2px;
+    position:absolute;
+    bottom:200%;
+    transform:translateY(-50%);
+    margin-left:25px;
+    width:150px;
+    padding:5px;
+    border-radius:10px;
+    background:rgb(52 211 153);
+    color: #000;
+    font-weight: bold;
+    text-align:center;
+    display:none;
+  }
+
+  .tooltip:hover:before {
+    display:block;
+  }
+
+.code-block {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 10px; /* bir az kiçik font */
+    border-radius: 6px;
+    padding: 10px;
+    overflow-x: auto;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.hljs-special {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 10px;
+    color: rgb(52 211 153);
+    font-weight: bold;
+}
+
+
+
+
+@media screen and (max-width:600px) {
+    .container {
+        height: 700px;
+        width: 280px;
+    }
+    h2 {
+        font-size: x-large;
+    }
+    .icons i {
+        font-size: large;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .container {
+        height: 800px;
+        width: 280px;
+    }
+    h2 {
+        font-size: x-large;
+    }
+    .icons i {
+        font-size: large;
+        margin-bottom: 10px;
+    }
+}
+
+/* ********************** keyframes ********************* */
+
+.bounce {
+    animation: bounce 2s ease;
+}
+
+@keyframes bounce {
+    30% { transform: scale(1.1); }
+    40%, 60% { transform: rotate(-10deg) scale(1.1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+    70% { transform: rotate(0deg) scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+.hinge {
+    animation: hinge 2s ease;
+}
+@keyframes hinge {
+    0% { transform: rotate(0); transform-origin: top left; animation-timing-function: ease-in-out; }  
+    20%, 60% { transform: rotate(30deg); transform-origin: top left; animation-timing-function: ease-in-out; }  
+    40% { transform: rotate(15deg); transform-origin: top left; animation-timing-function: ease-in-out; } 
+    80% { transform: rotate(15deg) translateY(0); opacity: 0.5; transform-origin: top left; animation-timing-function: ease-in-out; } 
+    100% { transform: translateY(200px); opacity: 0; visibility: hidden;}
+}
+
