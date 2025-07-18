@@ -63,7 +63,7 @@ body {
 
 .main {
     top: 50%;
-    left: 50%;
+    left: 60%;
     position: absolute;
     transform: translate(-50%, -50%);
     --g: 10px;
@@ -79,6 +79,18 @@ body {
     filter: grayscale(90%);
     transition: 1s;
     opacity: 0.8;
+}
+
+.left-panel {
+    margin: 10px;
+    padding: 5px;
+    width: 600px;
+    max-height: 800px;
+    /*height: 600px;*/
+    box-shadow: 0 6px 15px rgb(52 211 153);
+    background-size: cover;
+    font-family: 'Abel', sans-serif;
+    overflow: auto;
 }
 
 .main:hover {
@@ -106,7 +118,7 @@ body {
 .content {
     bottom: 0;
     position: absolute;
-    padding: 20px;
+    padding: 10px;
 }
 
 h2 {
@@ -142,16 +154,16 @@ h2 {
     margin-bottom: 10px;
 }
 
-.console {
-    max-width: 460px;
+.profile, .skills {
+    font-size: 14px;
 }
 
 .console header {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-color: #343333;
-    height: 40px;
-    line-height: 40px;
+    height: 35px;
+    line-height: 35px;
     text-align: center;
     color: rgb(52 211 153);
 }
@@ -160,8 +172,8 @@ h2 {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-sizing: border-box;
-    padding: 22px;
-    height: calc(100% - 40px);
+    padding: 20px;
+    height: calc(100% - 50px);
     background-color: #000;
     color: rgb(52 211 153);
 }
@@ -246,10 +258,37 @@ h2 {
     display:block;
   }
 
+.code-block {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 10px; /* bir az kiçik font */
+    border-radius: 6px;
+    padding: 10px;
+    overflow-x: auto;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.hljs-special {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.color-gr {
+    color: rgb(52 211 153);
+}
+
+.color-purple {
+    color: rgb(198, 106, 192);
+
+}
+
 @media screen and (max-width:600px) {
     .container {
         height: 700px;
-        width: 280px;
+        width: 500px;
     }
     h2 {
         font-size: x-large;
@@ -262,7 +301,7 @@ h2 {
 
 @media screen and (max-width:300px) {
     .container {
-        height: 700px;
+        height: 800px;
         width: 280px;
     }
     h2 {
