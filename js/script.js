@@ -3,7 +3,7 @@ var lang = 'en';
 const DATA = {
     "en": {
 	    "infrastructure" : {
-        "code": "interface <span class=\"hljs-special\">DeveloperTraits</span> {\n" +
+        "code": "interface <span class=\"hljs-special color-gr\">DeveloperTraits</span> {\n" +
           "    boolean isCurious();\n" +
           "    boolean isProblemSolver();\n" +
           "    boolean lovesCleanCode();\n" +
@@ -25,7 +25,7 @@ const DATA = {
           "        this.skills = skills;\n" +
           "        this.contacts = contacts;\n" +
           "    }\n\n" +
-          "    protected String <span class=\"color-purple\">profile()</span> {\n" +
+          "    protected String <span class=\"hljs-special color-purple\">profile()</span> {\n" +
           "        StringBuilder html = new StringBuilder();\n\n" +
           "        html.append(\"&lt;div&gt;\")\n" +
           "            .append(\"&lt;div&gt;\")\n" +
@@ -45,7 +45,7 @@ const DATA = {
           "        html.append(\"&lt;/div&gt;&lt;/div&gt;\");\n\n" +
           "        return html.toString();\n" +
           "    }\n\n" +
-          "    protected String <span class=\"color-purple\">skills()</span> {\n" +
+          "    protected String <span class=\"hljs-special color-purple\">skills()</span> {\n" +
           "        StringBuilder sb = new StringBuilder();\n" +
           "        sb.append(\"&lt;div class=\"skills\"&gt;\");\n" +
           "        for (String skill : skills) {\n" +
@@ -59,7 +59,7 @@ const DATA = {
           "        return input.substring(0, 1).toUpperCase() + input.substring(1);\n" +
           "    }\n" +
           "}\n\n" +
-          "final class <span class=\"hljs-special color-gr\">Tur4b</span> extends <span class=\"hljs-special\">Developer</span> {\n" +
+          "final class <span class=\"hljs-special color-gr\">Tur4b</span> extends <span class=\"hljs-special color-purple\">Developer</span> {\n" +
           "    private static volatile <span class=\"hljs-special color-gr\">Tur4b</span> instance;\n\n" +
           "    private <span class=\"hljs-special color-gr\">Tur4b</span>() {\n" +
           "        super(\n" +
@@ -79,7 +79,7 @@ const DATA = {
           "            )\n" +
           "        );\n" +
           "    }\n\n" +
-          "    public static <span class=\"hljs-special color-gr\">Tur4b</span> getInstance() {\n" +
+          "    public static <span class=\"hljs-special color-gr\">Tur4b</span> <span class=\"hljs-special color-purple\">getInstance()</span> {\n" +
           "        if (instance == null) {\n" +
           "            synchronized (<span class=\"hljs-special color-gr\">Tur4b</span>.class) {\n" +
           "                if (instance == null) {\n" +
@@ -333,4 +333,182 @@ window.onload=function(){
         }, 2000);
     }
 
+	// Auto-scroll left panel with smooth continuous movement
+	function initLeftPanel() {
+		const leftPanel = document.querySelector('.left-panel');
+		if (!leftPanel) return;
+
+		// Remove any existing auto-scroll track
+		if (leftPanel.__autoScrollTrack) {
+			const track = leftPanel.__autoScrollTrack;
+			const infra = track.querySelector('.infrastructure');
+			if (infra) {
+				// Move infrastructure back to its original position
+				leftPanel.appendChild(infra);
+			}
+			track.remove();
+			delete leftPanel.__autoScrollTrack;
+		}
+
+		// Ensure proper overflow settings - no scroll bars
+		leftPanel.style.overflow = 'hidden';
+		leftPanel.style.overflowX = 'hidden';
+		leftPanel.style.overflowY = 'hidden';
+		
+		// Remove any unnecessary padding/margins that might cause gaps
+		const infra = leftPanel.querySelector('.infrastructure');
+		if (infra) {
+			infra.style.margin = '0';
+			infra.style.padding = '0';
+			infra.style.maxHeight = '100%';
+			infra.style.overflow = 'hidden';
+		}
+		
+		// Force no scroll bars on all browsers
+		leftPanel.style.msOverflowStyle = 'none';  // IE/Edge
+		leftPanel.style.scrollbarWidth = 'none';   // Firefox
+		leftPanel.style.webkitScrollbar = 'none';  // Webkit browsers
+
+		// Start auto-scroll animation
+		startAutoScroll(leftPanel);
+	}
+
+	// Auto-scroll function for continuous content movement
+	function startAutoScroll(leftPanel) {
+		const infra = leftPanel.querySelector('.infrastructure');
+		if (!infra) return;
+
+		// Get the content height
+		const contentHeight = infra.scrollHeight;
+		const panelHeight = leftPanel.clientHeight;
+		
+		// Only auto-scroll if content is taller than panel
+		if (contentHeight <= panelHeight) return;
+
+		// Create a wrapper for smooth scrolling
+		const scrollWrapper = document.createElement('div');
+		scrollWrapper.style.position = 'relative';
+		scrollWrapper.style.width = '100%';
+		scrollWrapper.style.height = '100%';
+		scrollWrapper.style.overflow = 'visible';
+		scrollWrapper.style.clipPath = 'none';
+		scrollWrapper.style.minHeight = '100%';
+		scrollWrapper.style.height = 'auto';
+
+		// Move infrastructure into wrapper
+		leftPanel.insertBefore(scrollWrapper, infra);
+		scrollWrapper.appendChild(infra);
+
+		// Set initial position - start content at bottom so it scrolls up into view
+		infra.style.position = 'relative';
+		infra.style.top = panelHeight + 'px'; // Start content below the panel
+		infra.style.transition = 'none'; // Remove transition for smooth animation
+		infra.style.clipPath = 'none';
+		infra.style.zIndex = '1';
+
+		let currentPosition = panelHeight; // Start from below the panel
+		const scrollSpeed = 0.8; // pixels per frame (reduced speed for comfortable reading)
+
+		function animateScroll() {
+			// Check if animation is paused
+			if (leftPanel.__animationPaused) {
+				return;
+			}
+			
+			currentPosition -= scrollSpeed;
+			
+			// Reset to bottom when content has scrolled completely out of view
+			// Add extra margin to ensure clean transition between cycles
+			if (currentPosition <= -(contentHeight + 50)) {
+				currentPosition = panelHeight + 50; // Start slightly below for smoother transition
+			}
+			
+			infra.style.top = currentPosition + 'px';
+			requestAnimationFrame(animateScroll);
+		}
+
+		// Start the animation
+		requestAnimationFrame(animateScroll);
+
+		// Pause on hover/touch
+		leftPanel.addEventListener('mouseenter', () => {
+			// Pause animation by stopping requestAnimationFrame
+			leftPanel.__animationPaused = true;
+		});
+
+		leftPanel.addEventListener('mouseleave', () => {
+			// Resume animation
+			leftPanel.__animationPaused = false;
+			requestAnimationFrame(animateScroll);
+		});
+
+		// Pause on touch
+		leftPanel.addEventListener('touchstart', () => {
+			leftPanel.__animationPaused = true;
+		}, { passive: true });
+
+		leftPanel.addEventListener('touchend', () => {
+			leftPanel.__animationPaused = false;
+			requestAnimationFrame(animateScroll);
+		}, { passive: true });
+
+		// Store animation state
+		leftPanel.__animationPaused = false;
+		leftPanel.__animateScroll = animateScroll;
+	}
+
+	// Initialize simple left panel
+	initLeftPanel();
+	
+	// JavaScript-based tooltip solution
+	initTooltips();
+}
+
+// Tooltip functionality
+function initTooltips() {
+	// Create tooltip element
+	const tooltip = document.createElement('div');
+	tooltip.id = 'dynamic-tooltip';
+	tooltip.style.cssText = `
+		position: fixed;
+		background: rgb(52, 211, 153);
+		color: #000;
+		padding: 8px 12px;
+		border-radius: 8px;
+		font-size: 12px;
+		font-weight: bold;
+		white-space: nowrap;
+		z-index: 10000;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		transform: translateX(-50%);
+	`;
+	document.body.appendChild(tooltip);
+
+	// Add event listeners to all tooltip elements
+	document.addEventListener('mouseover', function(e) {
+		if (e.target.closest('.tooltip')) {
+			const tooltipElement = e.target.closest('.tooltip');
+			const text = tooltipElement.getAttribute('data-text');
+			if (text) {
+				tooltip.textContent = text;
+				tooltip.style.opacity = '1';
+			}
+		}
+	});
+
+	document.addEventListener('mousemove', function(e) {
+		if (tooltip.style.opacity === '1') {
+			tooltip.style.left = e.pageX + 'px';
+			tooltip.style.top = (e.pageY - 40) + 'px';
+		}
+	});
+
+	document.addEventListener('mouseout', function(e) {
+		if (e.target.closest('.tooltip')) {
+			tooltip.style.opacity = '0';
+		}
+	});
 }
