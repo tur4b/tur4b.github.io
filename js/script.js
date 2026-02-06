@@ -1,147 +1,111 @@
 var lang = 'en';
 
+function getExperienceYear() {
+    const currentYear = new Date().getFullYear();
+    const experienceYear = currentYear - 2023;
+
+    if(experienceYear == 3) {
+        return "two";
+    }
+    if(experienceYear == 4) {
+        return "three";
+    }
+    if(experienceYear == 5) {
+        return "four";
+    }
+    if(experienceYear == 6) {
+        return "five";
+    }
+    if(experienceYear == 7) {
+        return "six";
+    }
+    if(experienceYear == 8) {
+        return "seven";
+    }
+}
+
 const DATA = {
     "en": {
 	    "infrastructure" : {
-        "code": "interface <span class=\"hljs-special color-gr\">DeveloperTraits</span> {\n" +
-          "    boolean isCurious();\n" +
-          "    boolean isProblemSolver();\n" +
-          "    boolean lovesCleanCode();\n" +
-          "}\n\n" +
-          "abstract class <span class=\"hljs-special color-gr\">Developer</span> implements <span class=\"hljs-special color-gr\">DeveloperTraits</span> {\n" +
-          "    final String name;\n" +
-          "    final String status;\n" +
-          "    final String profession;\n" +
-          "    final List&lt;String&gt; skills;\n" +
-          "    final Map&lt;String, String&gt; contacts;\n\n" +
-          "    <span class=\"hljs-special color-gr\">Developer</span>(String name,\n" +
-          "               String status,\n" +
-          "               String profession,\n" +
-          "               List&lt;String&gt; skills,\n" +
-          "               Map&lt;String, String&gt; contacts) {\n" +
-          "        this.name = name;\n" +
-          "        this.status = status;\n" +
-          "        this.profession = profession;\n" +
-          "        this.skills = skills;\n" +
-          "        this.contacts = contacts;\n" +
-          "    }\n\n" +
-          "    protected String <span class=\"hljs-special color-purple\">profile()</span> {\n" +
-          "        StringBuilder html = new StringBuilder();\n\n" +
-          "        html.append(\"&lt;div&gt;\")\n" +
-          "            .append(\"&lt;div&gt;\")\n" +
-          "            .append(\"&lt;span class=\\\"hljs-special\\\"&gt;Name:&lt;/span&gt; \").append(name).append(\"&lt;br&gt;\")\n" +
-          "            .append(\"&lt;span class=\\\"hljs-special\\\"&gt;Profession:&lt;/span&gt; \").append(profession).append(\"&lt;br&gt;\")\n" +
-          "            .append(\"&lt;span class=\\\"hljs-special\\\"&gt;Status:&lt;/span&gt; \").append(status)\n" +
-          "            .append(\"&lt;/div&gt;\");\n\n" +
-          "        html.append(\"&lt;div class=\\\"icons mg-b-20\\\"&gt;\");\n" +
-          "        for (Map.Entry&lt;String, String&gt; entry : contacts.entrySet()) {\n" +
-          "            String key = entry.getKey();\n" +
-          "            String url = entry.getValue();\n" +
-          "            html.append(\"&lt;a href=\\\"\").append(url).append(\"\\\" target=\\\"_blank\\\"&gt;\")\n" +
-          "                .append(\"&lt;span class=\\\"tooltip\\\" data-text=\\\"\").append(capitalize(key)).append(\"\\\"&gt;\")\n" +
-          "                .append(\"&lt;i class=\\\"fa fa-\").append(key).append(\" black-color t-300\\\" aria-hidden=\\\"true\\\"&gt;&lt;/i&gt;\")\n" +
-          "                .append(\"&lt;/span&gt;&lt;/a&gt;\");\n" +
-          "        }\n" +
-          "        html.append(\"&lt;/div&gt;&lt;/div&gt;\");\n\n" +
-          "        return html.toString();\n" +
-          "    }\n\n" +
-          "    protected String <span class=\"hljs-special color-purple\">skills()</span> {\n" +
-          "        StringBuilder sb = new StringBuilder();\n" +
-          "        sb.append(\"&lt;div class=\"skills\"&gt;\");\n" +
-          "        for (String skill : skills) {\n" +
-          "            sb.append(\"&lt;span class=\"hljs-special color-gr\"&gt;\").append(skill).append(\"&lt;/span&gt;\");\n" +
-          "        }\n" +
-          "        sb.append(\"&lt;/div&gt;\");\n" +
-          "        return sb.toString();\n" +
-          "    }\n\n" +
-          "    private String capitalize(String input) {\n" +
-          "        if (input == null || input.isEmpty()) return input;\n" +
-          "        return input.substring(0, 1).toUpperCase() + input.substring(1);\n" +
-          "    }\n" +
-          "}\n\n" +
-          "final class <span class=\"hljs-special color-gr\">Tur4b</span> extends <span class=\"hljs-special color-purple\">Developer</span> {\n" +
-          "    private static volatile <span class=\"hljs-special color-gr\">Tur4b</span> instance;\n\n" +
-          "    private <span class=\"hljs-special color-gr\">Tur4b</span>() {\n" +
-          "        super(\n" +
-          "            \"Turab Eybaliyev\",\n" +
-          "            \"Working...\",\n" +
-          "            \"Java Developer\",\n" +
-          "            List.of(\n" +
-          "                \"OOP\", \"Design Patterns\", \"Algorithms & Data Structures\", \"Java\",\n" +
-          "                \"Spring framework (Core, Boot, MVC, Data JPA, Security)\",\n" +
-          "                \"Apache Kafka\", \"RabbitMQ\", \"OAuth2\", \"Hibernate\",\n" +
-          "                \"Swagger\", \"Zipkin\", \"Prometheus\", \"Grafana\",\n" +
-          "                \"JUnit\", \"Mockito\", \"Maven\", \"Gradle\"\n" +
-          "            ),\n" +
-          "            Map.of(\n" +
-          "                \"github\", \"https://github.com/tur4b\",\n" +
-          "                \"linkedin\", \"https://www.linkedin.com/in/turab-eybaliyev\"\n" +
-          "            )\n" +
-          "        );\n" +
-          "    }\n\n" +
-          "    public static <span class=\"hljs-special color-gr\">Tur4b</span> <span class=\"hljs-special color-purple\">getInstance()</span> {\n" +
-          "        if (instance == null) {\n" +
-          "            synchronized (<span class=\"hljs-special color-gr\">Tur4b</span>.class) {\n" +
-          "                if (instance == null) {\n" +
-          "                    instance = new <span class=\"hljs-special color-gr\">Tur4b</span>();\n" +
-          "                }\n" +
-          "            }\n" +
-          "        }\n" +
-          "        return instance;\n" +
-          "    }\n\n" +
-          "    public boolean isCurious() { return true; }\n" +
-          "    public boolean isProblemSolver() { return true; }\n" +
-          "    public boolean lovesCleanCode() { return true; }\n" +
-          "}\n\n" +
-          "<span class=\"hljs-special color-gr\">public class Main { </span>\n" +
-          "    public static void <span class=\"hljs-special color-purple\">main(String[] args)</span> {\n" +
-          "        <span class=\"hljs-special color-gr\">Tur4b</span> tur4b = <span class=\"hljs-special color-gr\">Tur4b</span>.getInstance();\n" +
-          "    }\n" +
-          "}",
-            "profile": "<div class=\"profile\"><span class=\"hljs-special color-gr\">Name:</span> Turab Eybaliyev\n<span class=\"hljs-special color-gr\">Profession:</span> Java Developer\n<span class=\"hljs-special color-gr\">Status:</span> Working..." + 
-            "\n<span class=\"hljs-special color-gr\">Is Curious to learn:</span> True"+
-            "\n<span class=\"hljs-special color-gr\">Is Problem solver:</span> True"+
-            "\n<span class=\"hljs-special color-gr\">Loves Clean code:</span> True"+
-            "</br>" + 
+        "details": "<div class=\"profile pd-10\">" + 
+            "<span class=\"hljs-special color-gr fs-25\">Turab Eybaliyev 👨‍💻</span>" + 
+            "<br><span class=\"hljs-special color-gr fs-20\">Java backend developer ☕ + 🌱</span>" + 
+            "\n\n<img src=\"profile-picture.png\"/>"+
+            "<span class=\"hljs-special\">I am an eager and detail-oriented Java Developer with over than " + getExperienceYear() +" years of experience in backend development. I focus on developing softwares, actively applying best practices to optimize code quality, and always excited to collaborate, share knowledge, and contribute to projects that make an impact ✨.</span>" +
+            "\n\n<span class=\"hljs-special color-gr\">Curious learner 📚</span>"+
+            "\n<span class=\"hljs-special color-gr\">Code lover 💻</span>"+
             "</br></br><div class=\"icons mg-b-20\">" +
-    "<a href=\"https://github.com/tur4b\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Github\"><i class=\"fa fa-github black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
-    "<a href=\"https://stackoverflow.com/users/8747039/turab\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Stackoverflow\"><i class=\"fa fa-stack-overflow orange-color t-300\" aria-hidden=\"true\"></i></span></a>" +
-    "<a href=\"https://www.linkedin.com/in/turab-eybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"LinkedIn\"><i class=\"fa fa-linkedin blue-color t-300\" aria-hidden=\"true\"></i></span></a>" +
-    "</div></div>",
-            "skills": "<div class=\"skills\">\n" +
-  "<span class=\"hljs-special color-gr\">OOP</span>\n" +
-  "<span class=\"hljs-special color-gr\">Design Patterns</span>\n" +
-  "<span class=\"hljs-special color-gr\">Algorithms &amp; Data Structures</span>\n" +
-  "<span class=\"hljs-special color-gr\">Java</span>\n" +
-  "<span class=\"hljs-special color-gr\">Spring framework (Core, Boot, MVC, Data JPA, Security)</span>\n" +
-  "<span class=\"hljs-special color-gr\">Apache Kafka</span>\n" +
-  "<span class=\"hljs-special color-gr\">RabbitMQ</span>\n" +
-  "<span class=\"hljs-special color-gr\">OAuth2</span>\n" +
-  "<span class=\"hljs-special color-gr\">Hibernate</span>\n" +
-  "<span class=\"hljs-special color-gr\">Swagger</span>\n" +
-  "<span class=\"hljs-special color-gr\">Zipkin</span>\n" +
-  "<span class=\"hljs-special color-gr\">Prometheus</span>\n" +
-  "<span class=\"hljs-special color-gr\">Grafana</span>\n" +
-  "<span class=\"hljs-special color-gr\">JUnit</span>\n" +
-  "<span class=\"hljs-special color-gr\">Mockito</span>\n" +
-  "<span class=\"hljs-special color-gr\">Maven</span>\n" +
-  "<span class=\"hljs-special color-gr\">Gradle</span>\n" +
-"</div>"
+            "<a href=\"https://github.com/tur4b\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Github\"><i class=\"fa fa-github black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "<a href=\"https://stackoverflow.com/users/8747039/turab\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Stackoverflow\"><i class=\"fa fa-stack-overflow orange-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "<a href=\"https://www.linkedin.com/in/turab-eybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"LinkedIn\"><i class=\"fa fa-linkedin blue-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "<a href=\"https://medium.com/@turabeybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Medium\"><i class=\"fa fa-medium black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "</div></div>",
+        "profile": "<div class=\"profile\">" + 
+            "\n<span style=\"display:block; text-align:left; font-size: 30px; margin-left: 5px;\" class=\"hljs-special color-gr\">Turab Eybaliyev 👨‍💻</span>"+
+            "\n<div class=\"icons mg-b-10\" style=\"display:block; margin:auto 0;\">" +
+            "<a href=\"https://github.com/tur4b\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Github\"><i class=\"fa fa-github black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "<a href=\"https://stackoverflow.com/users/8747039/turab\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Stackoverflow\"><i class=\"fa fa-stack-overflow orange-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "<a href=\"https://www.linkedin.com/in/turab-eybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"LinkedIn\"><i class=\"fa fa-linkedin blue-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "<a href=\"https://medium.com/@turabeybaliyev\" target=\"_blank\"><span class=\"tooltip\" data-text=\"Medium\"><i class=\"fa fa-medium black-color t-300\" aria-hidden=\"true\"></i></span></a>" +
+            "</div></div>",
+        "skills": `
+<div class="skills mg-b-20">
+    <span class="hljs-special color-gr">Core Programming 🧬</span>
+    <span class="hljs-special">Java ☕</span>
+    <span class="hljs-special">OOP</span>
+    <span class="hljs-special">SOLID Principles 📐</span>
+    <span class="hljs-special">Design Patterns 🧩</span>
+    <span class="hljs-special">Data Structures and Algorithms 🧠</span>
+    <span class="hljs-special">Microservices ⚙️</span>
+
+    <span class="hljs-special color-gr">Spring ecosystem 🌱</span>
+    <span class="hljs-special">Spring (Core, Boot, Data, AOP, Security, Cloud)</span>
+
+    <span class="hljs-special color-gr">Web Services 🌐</span>
+    <span class="hljs-special">Restful API</span>
+
+    <span class="hljs-special color-gr">Message Brokers 📩</span>
+    <span class="hljs-special">Apache Kafka 📩</span>
+    <span class="hljs-special">RabbitMQ 🐇</span>
+
+    <span class="hljs-special color-gr">Database and ORM 🗄️</span>
+    <span class="hljs-special">RDBMS</span>
+        <span class="hljs-special">PostgreSQL 🐘, Oracle 🏛️, MySQL 🐬</span>
+        <span class="hljs-special">JPA, Hibernate 🔗</span>
+        <span class="hljs-special">Liquibase 📝</span>
+        <span class="hljs-special">Flyway 📝</span>
+    <span class="hljs-special">NoSQL</span>
+        <span class="hljs-special">Redis ⚡</span>
+        <span class="hljs-special">Elasticsearch 🔍</span>
+
+    <span class="hljs-special color-gr">Testing 🧪</span>
+    <span class="hljs-special">JUnit</span>
+    <span class="hljs-special">Mockito</span>
+
+    <span class="hljs-special color-gr">DevOps and Tools 🛠️ + 📦 + ☁️</span>
+    <span class="hljs-special">Docker 🐳</span>
+    <span class="hljs-special">Kubernetes ☸️</span>
+    <span class="hljs-special">Gradle/Maven 🔧</span>
+    <span class="hljs-special">Git</span>
+
+    <span class="hljs-special color-gr">Monitoring and Observability 📈</span>
+    <span class="hljs-special">OpenTelemetry, Prometheus, Grafana, ELK</span>
+    <span class="hljs-special">Zipkin/Jaeger 🕵️‍♂️</span>
+</div>`
         },
         "console": {
-            "header": "tur4b@test <strong>You are welcome</strong>",
-            "commands": "Type @profile, @skills, @clear, @help @bounce",
+            "header": "<span class=\"hljs-special\">Terminal<span>",
+            "commands": "<span class=\"hljs-special\">Type @profile, @skills, @bounce</span>",
             "info": {
-                "profile": "<strong>profile</strong> is shown",
-                "skills": "<strong>skills</strong> is shown",
-                "help": "<strong>help</strong> is shown",
-                "clear": "<strong>clear</strong> was called",
-                "bounce": "<strong>make it bouce</strong> was called",
-                "github": "<strong>Github page</strong> was opened",
-                "linkedin": "<strong>Linkedin page</strong> was opened"
+                "profile": "<span class=\"hljs-special\">Profile is displayed</span>",
+                "skills": "<span class=\"hljs-special\">Skills are displayed</span>",
+                "bounce": "<span class=\"hljs-special\">Bouncing</span>",
+                "github": "<span class=\"hljs-special\">Forward to github account</span>",
+                "linkedin": "<span class=\"hljs-special\">Forward to linkedin account</span>",
+                "medium": "<span class=\"hljs-special\">Forward to medium account</span>"
             },
             "error": {
-                "message": "Invalid command. Type @help for help"
+                "message": "Invalid command"
             }
         },
         "commands": {
@@ -159,14 +123,6 @@ const DATA = {
             "clear": {
                 "cmd": "clear",
                 "message": "<strong>@clear - </strong> clear content"
-            },
-            "lang": {
-                "cmd": "lang",
-                "message": "<strong>@lang - </strong> change language (2 languages exist)"
-            },
-            "help": {
-                "cmd": "help",
-                "message": "<strong>@help - </strong> show all commands"
             },
             "bounce": {
                 "cmd": "bounce",
@@ -190,9 +146,9 @@ function profileContent() {
     </div>`;
 }
 
-function infrastructureContent() {
+function detailsContent() {
     return `<div class="profile mg-b-20">
-        <pre class="code-block"><code class="language-java">${DATA[lang].infrastructure.code}</code></pre>
+        <pre class="code-block"><code class="language-java">${DATA[lang].infrastructure.details}</code></pre>
     </div>`;
 }
 
@@ -200,29 +156,11 @@ function skillsContent() {
      return `<div class="profile mg-b-20">
         <pre class="code-block"><code class="language-java">${DATA[lang].infrastructure.skills}</code></pre>
     </div>`;
-} 
-
-function allCommandsContent() {
-    const allCommands = "<div class=\"mg-b-20\">" + 
-    "    <h3 class=\"space-3\" align=\"left\">" + DATA[lang].commands.header + "</h3>" + 
-    "<ul align=\"left\">" +
-    "<li>" + DATA[lang].commands.profile.message + "</li>" +
-    "<li>" + DATA[lang].commands.skills.message + "</li>" +
-    "<li>" + DATA[lang].commands.clear.message + "</li>" +
-    "<li>" + DATA[lang].commands.bounce.message + "</li>" +
-    "<li>" + DATA[lang].commands.help.message + "</li>" +
-    "</ul>" +
-    "    <br/>" + 
-    "    <h3 class=\"space-3\" align=\"left\">" + DATA[lang].commands.headerAdditional + "</h3>" + 
-    "<ul align=\"left\">" +
-    "<li>" + DATA[lang].commands.github.message + "</li>" +
-    "<li>" + DATA[lang].commands.linkedin.message + "</li>" +
-    "</ul>" +
-    "</div>";
-    return allCommands;        
 }
     
 window.onload=function(){
+
+    initLeftPanel();
 
     init();
 
@@ -230,6 +168,9 @@ window.onload=function(){
     const commandError = document.getElementById("command-error");
     const commandInput = document.getElementsByClassName("command")[0];
     const contentData = document.getElementsByClassName("data")[0];
+    const leftPanelData = document.getElementsByClassName("infrastructure")[0];
+
+    contentData.innerHTML = profileContent();
 
     // set all commands as default    
     commandInput.addEventListener('keydown', (event) => {
@@ -241,47 +182,44 @@ window.onload=function(){
 
     function processCommand() {
         const cmd = commandInput.value;
+        const leftPanelFooterData = document.getElementsByClassName("infra-footer")[0];
+
         if(cmd === DATA[lang].commands.profile.cmd) {
-            contentData.innerHTML = profileContent();
+            leftPanelData.innerHTML = detailsContent();
             consoleShown.innerHTML = DATA[lang].console.info.profile;
-            bounceDataContent();
+            leftPanelFooterData.innerHTML = DATA[lang].console.info.profile;
+            // restart auto-scroll for the new content
+            initLeftPanel();
         }
         else if(cmd === DATA[lang].commands.skills.cmd) {
-            contentData.innerHTML = skillsContent();
+            leftPanelData.innerHTML = skillsContent();
             consoleShown.innerHTML = DATA[lang].console.info.skills;
-            bounceDataContent();
-        }
-        else if(cmd === DATA[lang].commands.clear.cmd) {
-            if(contentData.innerHTML != '') {
-                contentData.classList.add('hinge');
-                setTimeout(() => {
-                    contentData.classList.remove('hinge');
-                    contentData.innerHTML = '';
-                    consoleShown.innerHTML = DATA[lang].console.info.clear;
-                }, 2000);
-            }
-        }
-        else if(cmd === DATA[lang].commands.help.cmd) {
-            contentData.innerHTML = allCommandsContent();
-            consoleShown.innerHTML = DATA[lang].console.info.help;
-            bounceDataContent();
+            leftPanelFooterData.innerHTML = DATA[lang].console.info.skills;
+
+            // restart auto-scroll for the new content
+            initLeftPanel();
         }
         else if(cmd === DATA[lang].commands.bounce.cmd) {
             consoleShown.innerHTML = DATA[lang].console.info.bounce;
-            // make it bouce
             bounceDataContent();
         }
         else if(cmd === DATA[lang].commands.github.cmd) {
             consoleShown.innerHTML = DATA[lang].console.info.github;
             setTimeout(() => {
                 window.open('https://github.com/tur4b', '_blank');
-            }, "1000");
+            }, "500");
         }
         else if(cmd === DATA[lang].commands.linkedin.cmd) {
             consoleShown.innerHTML = DATA[lang].console.info.linkedin;
             setTimeout(() => {
                 window.open('https://www.linkedin.com/in/turab-eybaliyev', '_blank');
-            }, "1000");
+            }, "500");
+        }
+        else if(cmd === DATA[lang].commands.medium.cmd) {
+            consoleShown.innerHTML = DATA[lang].console.info.medium;
+            setTimeout(() => {
+                window.open('https://medium.com/@turabeybaliyev', '_blank');
+            }, "500");
         }
         else {
             commandError.innerHTML = DATA[lang].console.error.message;
@@ -303,13 +241,16 @@ window.onload=function(){
         consoleCommand.placeholder = DATA[lang].commands.placeholder;
 
     	const infrastructure = document.getElementsByClassName("infrastructure")[0];
-	    infrastructure.innerHTML = infrastructureContent();
+	    infrastructure.innerHTML = detailsContent();
 
         const contentData = document.getElementsByClassName("data")[0];
         const consoleShown = document.getElementById('console-shown');
 
         contentData.innerHTML = profileContent();
         consoleShown.innerHTML = DATA[lang].console.info.profile;
+
+        const leftPanelFooterData = document.getElementsByClassName("infra-footer")[0];
+        leftPanelFooterData.innerHTML = 'Type your command on the terminal that located at right side';
 
         bounceDataContent();
 
@@ -325,7 +266,7 @@ window.onload=function(){
     }
 
     function bounceDataContent() {
-        const dataDiv = document.getElementsByClassName('data')[0];
+        const dataDiv = document.getElementsByClassName('infrastructure')[0];
         dataDiv.classList.add('bounce');
 
         setTimeout(() => {
@@ -333,132 +274,124 @@ window.onload=function(){
         }, 2000);
     }
 
-	// Auto-scroll left panel with smooth continuous movement
-	function initLeftPanel() {
-		const leftPanel = document.querySelector('.left-panel');
-		if (!leftPanel) return;
+    function initLeftPanel() {
+        const leftPanel = document.querySelector('.left-panel');
+        if (!leftPanel) return;
 
-		// Remove any existing auto-scroll track
-		if (leftPanel.__autoScrollTrack) {
-			const track = leftPanel.__autoScrollTrack;
-			const infra = track.querySelector('.infrastructure');
-			if (infra) {
-				// Move infrastructure back to its original position
-				leftPanel.appendChild(infra);
-			}
-			track.remove();
-			delete leftPanel.__autoScrollTrack;
-		}
+        // Clean up any existing auto-scroll track/animation
+        if (leftPanel.__autoScrollTrack) {
+            const track = leftPanel.__autoScrollTrack;
+            const infra = track.querySelector('.infrastructure');
+            if (infra) {
+                // Move infrastructure back to the left panel (original location)
+                leftPanel.appendChild(infra);
+                infra.style.position = '';
+                infra.style.top = '';
+                infra.style.transition = '';
+                infra.style.zIndex = '';
+                infra.style.clipPath = '';
+                infra.style.margin = '';
+                infra.style.padding = '';
+                infra.style.maxHeight = '';
+                infra.style.overflow = '';
+            }
+            // cancel RAF if running
+            if (leftPanel.__animationFrameId) {
+                cancelAnimationFrame(leftPanel.__animationFrameId);
+                leftPanel.__animationFrameId = null;
+            }
+            track.remove();
+            delete leftPanel.__autoScrollTrack;
+            delete leftPanel.__animateScroll;
+            delete leftPanel.__animationPaused;
+        }
 
-		// Ensure proper overflow settings - no scroll bars
-		leftPanel.style.overflow = 'hidden';
-		leftPanel.style.overflowX = 'hidden';
-		leftPanel.style.overflowY = 'hidden';
-		
-		// Remove any unnecessary padding/margins that might cause gaps
-		const infra = leftPanel.querySelector('.infrastructure');
-		if (infra) {
-			infra.style.margin = '0';
-			infra.style.padding = '0';
-			infra.style.maxHeight = '100%';
-			infra.style.overflow = 'hidden';
-		}
-		
-		// Force no scroll bars on all browsers
-		leftPanel.style.msOverflowStyle = 'none';  // IE/Edge
-		leftPanel.style.scrollbarWidth = 'none';   // Firefox
-		leftPanel.style.webkitScrollbar = 'none';  // Webkit browsers
+        // Ensure no scrollbars on the panel
+        leftPanel.style.overflow = 'hidden';
+        leftPanel.style.overflowX = 'hidden';
+        leftPanel.style.overflowY = 'hidden';
+        leftPanel.style.msOverflowStyle = 'none';
+        leftPanel.style.scrollbarWidth = 'none';
+        leftPanel.style.webkitScrollbar = 'none';
 
-		// Start auto-scroll animation
-		startAutoScroll(leftPanel);
-	}
+        // Normalize styles on current infrastructure element (if it exists)
+        const infra = leftPanel.querySelector('.infrastructure');
+        if (infra) {
+            infra.style.margin = '0';
+            infra.style.padding = '0';
+            infra.style.maxHeight = '100%';
+            infra.style.overflow = 'hidden';
+        }
 
-	// Auto-scroll function for continuous content movement
-	function startAutoScroll(leftPanel) {
-		const infra = leftPanel.querySelector('.infrastructure');
-		if (!infra) return;
+        // Start auto-scroll (if needed)
+        startAutoScroll(leftPanel);
+    }
 
-		// Get the content height
-		const contentHeight = infra.scrollHeight;
-		const panelHeight = leftPanel.clientHeight;
-		
-		// Only auto-scroll if content is taller than panel
-		if (contentHeight <= panelHeight) return;
+    function startAutoScroll(leftPanel) {
+        const infra = leftPanel.querySelector('.infrastructure');
+        if (!infra) return;
 
-		// Create a wrapper for smooth scrolling
-		const scrollWrapper = document.createElement('div');
-		scrollWrapper.style.position = 'relative';
-		scrollWrapper.style.width = '100%';
-		scrollWrapper.style.height = '100%';
-		scrollWrapper.style.overflow = 'visible';
-		scrollWrapper.style.clipPath = 'none';
-		scrollWrapper.style.minHeight = '100%';
-		scrollWrapper.style.height = 'auto';
+        const contentHeight = infra.scrollHeight;
+        const panelHeight = leftPanel.clientHeight;
 
-		// Move infrastructure into wrapper
-		leftPanel.insertBefore(scrollWrapper, infra);
-		scrollWrapper.appendChild(infra);
+        console.log('contentHeight: ', contentHeight);
+        console.log('panelHeight: ', panelHeight);
 
-		// Set initial position - start content at bottom so it scrolls up into view
-		infra.style.position = 'relative';
-		infra.style.top = panelHeight + 'px'; // Start content below the panel
-		infra.style.transition = 'none'; // Remove transition for smooth animation
-		infra.style.clipPath = 'none';
-		infra.style.zIndex = '1';
+        // Only auto-scroll when content taller than panel
+        if (contentHeight <= (panelHeight + 10)) return;
 
-		let currentPosition = panelHeight; // Start from below the panel
-		const scrollSpeed = 0.8; // pixels per frame (reduced speed for comfortable reading)
+        // Create a wrapper (track) to hold the infra for smooth continuous movement
+        const scrollWrapper = document.createElement('div');
+        scrollWrapper.style.position = 'relative';
+        scrollWrapper.style.width = '100%';
+        scrollWrapper.style.height = '100%';
+        scrollWrapper.style.overflow = 'visible';
+        scrollWrapper.style.minHeight = '100%';
+        scrollWrapper.style.height = 'auto';
 
-		function animateScroll() {
-			// Check if animation is paused
-			if (leftPanel.__animationPaused) {
-				return;
-			}
-			
-			currentPosition -= scrollSpeed;
-			
-			// Reset to bottom when content has scrolled completely out of view
-			// Add extra margin to ensure clean transition between cycles
-			if (currentPosition <= -(contentHeight + 50)) {
-				currentPosition = panelHeight + 50; // Start slightly below for smoother transition
-			}
-			
-			infra.style.top = currentPosition + 'px';
-			requestAnimationFrame(animateScroll);
-		}
+        // Insert wrapper and move infra into it
+        leftPanel.insertBefore(scrollWrapper, infra);
+        scrollWrapper.appendChild(infra);
 
-		// Start the animation
-		requestAnimationFrame(animateScroll);
+        // Store track so we can clean it up later
+        leftPanel.__autoScrollTrack = scrollWrapper;
 
-		// Pause on hover/touch
-		leftPanel.addEventListener('mouseenter', () => {
-			// Pause animation by stopping requestAnimationFrame
-			leftPanel.__animationPaused = true;
-		});
+        // Prepare infra for animation
+        infra.style.position = 'relative';
+        infra.style.top = panelHeight + 'px';
+        infra.style.transition = 'none';
+        infra.style.clipPath = 'none';
+        infra.style.zIndex = '1';
 
-		leftPanel.addEventListener('mouseleave', () => {
-			// Resume animation
-			leftPanel.__animationPaused = false;
-			requestAnimationFrame(animateScroll);
-		});
+        let currentPosition = panelHeight;
+        const scrollSpeed = 1.2; // pixels per frame
 
-		// Pause on touch
-		leftPanel.addEventListener('touchstart', () => {
-			leftPanel.__animationPaused = true;
-		}, { passive: true });
+        leftPanel.__animationPaused = false;
 
-		leftPanel.addEventListener('touchend', () => {
-			leftPanel.__animationPaused = false;
-			requestAnimationFrame(animateScroll);
-		}, { passive: true });
+        function animateScroll() {
+            if (leftPanel.__animationPaused) {
+                // Keep scheduling while paused? We can still schedule again to check paused state
+                leftPanel.__animationFrameId = requestAnimationFrame(animateScroll);
+                return;
+            }
 
-		// Store animation state
-		leftPanel.__animationPaused = false;
-		leftPanel.__animateScroll = animateScroll;
-	}
+            currentPosition -= scrollSpeed;
 
-	// Initialize simple left panel
-	initLeftPanel();
+            if (currentPosition <= -(contentHeight + 50)) {
+                currentPosition = panelHeight + 50;
+            }
+
+            infra.style.top = currentPosition + 'px';
+            leftPanel.__animationFrameId = requestAnimationFrame(animateScroll);
+        }
+
+        // Store function reference (optional, for external control)
+        leftPanel.__animateScroll = animateScroll;
+
+        // Start animation
+        leftPanel.__animationFrameId = requestAnimationFrame(animateScroll);
+
+    }
 	
 	// JavaScript-based tooltip solution
 	initTooltips();
