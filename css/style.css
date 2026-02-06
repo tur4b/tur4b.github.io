@@ -83,6 +83,25 @@ body {
     border: 1px solid rgba(52, 211, 153, 0.1);
 }
 
+
+/* Footer visible at bottom with margin */
+.infra-footer {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+  /* inline-size: 500px; */
+  /* color: #d4d4d4; */
+  color: black;
+  background-color: rgb(52 211 153);
+  opacity: 0.7;
+}
+
 /* Desktop-specific container wrapper enhancements */
 @media screen and (min-width: 1201px) {
     .container-wrapper {
@@ -186,7 +205,7 @@ body {
 }
 
 .main {
-    width: 45%;
+    width: 32%;
     min-height: 600px;
     height: auto;
     position: relative;
@@ -236,8 +255,8 @@ body {
 @media screen and (min-width: 1201px) {
     .main:hover {
         box-shadow: 0 25px 50px rgba(52, 211, 153, 0.4);
-        transform: translateY(-5px);
-        border-color: rgba(52, 211, 153, 0.4);
+        /* transform: translateY(-5px); */
+        border-color: rgba(85, 137, 118, 0.4);
     }
 }
 
@@ -250,16 +269,16 @@ body {
         left: -2px;
         right: -2px;
         bottom: -2px;
-        background: linear-gradient(45deg, 
-            rgb(52 211 153), 
+        /* background: linear-gradient(45deg, 
+            rgb(68, 162, 130), 
             transparent 30%, 
             transparent 70%, 
-            rgb(52 211 153) 100%);
+            rgb(68, 162, 130) 100%); */
         border-radius: 22px;
         z-index: -1;
         opacity: 0;
         transition: opacity 0.3s ease;
-        animation: borderRotate 3s linear infinite;
+        /* animation: borderRotate 3s linear infinite; */
     }
 
     .main:hover::before {
@@ -295,13 +314,13 @@ body {
 /* Desktop-specific left panel enhancements */
 @media screen and (min-width: 1201px) {
     .left-panel {
-        padding: 30px;
+        padding: 20px;
         box-shadow: 0 20px 40px rgba(52, 211, 153, 0.3);
         /* background: linear-gradient(135deg, rgba(0, 0, 153, 0.9), rgba(20, 20, 20, 0.95)); */
         border-radius: 20px;
         border: 1px solid rgba(52, 211, 153, 0.2);
         backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
+        transition: all 0.6s ease;
         height: 600px;
         min-height: 600px;
         max-height: 600px;
@@ -381,7 +400,7 @@ body {
     margin: 0;
 }
     
-    .main .data {
+.main .data {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
@@ -423,7 +442,7 @@ body {
         box-sizing: border-box;
     }
     
-    .main .container {
+.main .container {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
@@ -524,29 +543,18 @@ h2 {
     letter-spacing: 0.5px;
 }
 
-.job-status {
-	font-weight: 500;
-	font-style: italic;
-	padding: 8px 15px;
-	margin-bottom: 25px;
-	margin-top: 50px;
-	background: linear-gradient(135deg, rgba(52, 211, 153, 0.1), rgba(52, 211, 153, 0.05));
-	border-radius: 8px;
-	color: rgb(52 211 153);
-	border: 1px solid rgba(52, 211, 153, 0.3);
-	box-shadow: 0 4px 12px rgba(52, 211, 153, 0.2);
-	transition: all 0.3s ease;
-}
-
-.job-status:hover {
-	background: linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(52, 211, 153, 0.1));
-	box-shadow: 0 6px 16px rgba(52, 211, 153, 0.3);
-	transform: translateY(-2px);
-}
 
 .details {
     font-style: italic;
     color: rgb(185, 206, 224);
+}
+
+.pd-5 {
+    padding: 5px;
+}
+
+.pd-10 {
+    padding: px;
 }
 
 .mg-b-20 {
@@ -558,7 +566,29 @@ h2 {
 }
 
 .profile, .skills {
-    font-size: 14px;
+    font-size: 20px;
+}
+
+.profile img { 
+    float: right; 
+    margin-right: 8px;
+    border-radius: 10%;
+    width: 180px;
+    height: 180px;
+    display: block;
+}
+
+
+.fs-30 {
+    font-size: 30px !important;
+}
+
+.fs-20 {
+    font-size: 20px !important;
+}
+
+.fs-25 {
+    font-size: 25px !important;
 }
 
 .console header {
@@ -608,7 +638,7 @@ h2 {
 
 .icons {
     display: inline;
-    margin-left: 20px;
+    /* margin-left: 20px; */
     position: relative;
     overflow: visible;
 }
@@ -625,10 +655,10 @@ h2 {
 
 .icons i {
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: rgb(98, 211, 153);
     transition: 0.3s;
-	padding: 23px;
+	padding: 10px;
     position: relative;
     background: rgba(52, 211, 153, 0.1);
     border-radius: 50%;
@@ -751,14 +781,16 @@ h2 {
     position: relative !important;
 }
 
-
-
 .hidden {
     visibility: hidden;
 }
 
 .color-red {
     color: rgb(207, 38, 38);
+}
+
+.color-black {
+    color: black;
 }
 
 ::placeholder {
@@ -835,23 +867,23 @@ h2 {
     }
 }
 
-
-
 .code-block {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 10px; /* bir az kiçik font */
+    font-size: 10px;
     border-radius: 6px;
-    padding: 10px;
+    padding: 5px;
     overflow-x: auto;
-    background-color: #1e1e1e;
+    /* background-color: #1e1e1e; */
+    background-color: rgb(18, 29, 25);
     color: #d4d4d4;
-    line-height: 1.4;
-    margin-bottom: 1rem;
+    line-height: 1.2;
+    /* margin-bottom: 1rem; */
+    opacity: 1;
 }
 
 .hljs-special {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -905,17 +937,6 @@ h2 {
     100% { transform: scale(1); }
 }
 
-
-.hinge {
-    animation: hinge 2s ease;
-}
-@keyframes hinge {
-    0% { transform: rotate(0); transform-origin: top left; animation-timing-function: ease-in-out; }  
-    20%, 60% { transform: rotate(30deg); transform-origin: top left; animation-timing-function: ease-in-out; }  
-    40% { transform: rotate(15deg); transform-origin: top left; animation-timing-function: ease-in-out; } 
-    80% { transform: rotate(15deg) translateY(0); opacity: 0.5; transform-origin: top left; animation-timing-function: ease-in-out; } 
-    100% { transform: translateY(200px); opacity: 0; visibility: hidden;}
-}
 
 /* Mobile-specific console adjustments */
 @media screen and (max-width: 768px) {
@@ -1389,6 +1410,7 @@ h2 {
     text-align: left !important;
 }
 
+
 .left-panel .infrastructure {
     position: relative;
     top: 0;
@@ -1407,6 +1429,7 @@ h2 {
     z-index: 1;
     min-height: 100%;
     height: auto;
+    border-radius: 2px;
 }
 
 .left-panel .infrastructure .code-block {
@@ -1417,6 +1440,7 @@ h2 {
     word-break: break-word;
     white-space: pre-wrap;
     box-sizing: border-box;
+    padding: 10px;
 }
 
 .left-panel .infrastructure .code-block code {
