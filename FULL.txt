@@ -1,0 +1,88 @@
+
+
+
+
+interface DeveloperTraits {
+  boolean isCurious();
+  boolean isProblemSolver();
+  boolean lovesCleanCode();
+}
+
+abstract class Developer implements DeveloperTraits {
+  final String name;
+  final String status;
+  final String profession;
+  final List<String> skills;
+  final Map<String, String> contacts;
+
+  Developer(String name, String status, String profession, List<String> skills, Map<String, String> contacts) {
+    this.name = name;
+    this.status = status;
+    this.profession = profession;
+    this.skills = skills;
+    this.contacts = contacts;
+  }
+  
+  protected String profile() {
+      String profile = "<div><span class=\"hljs-special\">Name:</span> Turab Eybaliyev\n<span class=\"hljs-special\">Profession:</span> Java Developer\n<span class=\"hljs-special\">Status:</span> Working...</div>";
+      String contact = "<div class=\"icons mg-b-20\">";
+
+      for(Map.Entry<String, String> contactEntry : contacts) {
+            contact += "<a href=\"" + contactEntry.getValue() + "\" target=\"_blank\"><span class=\"tooltip\" data-text=\"" + contactEntry.getKey() + "\"><i class=\"fa fa-" + contactEntry.getKey() + " black-color t-300\" aria-hidden=\"true\"></i></span></a>";
+      } 
+      contact += "</div>";
+      return profile + contact;
+  }
+  
+  protected String skills() {
+      return "";
+  }
+  
+}
+
+final class Tur4b extends Developer {
+  private static volatile Tur4b instance;
+
+  private Tur4b() {
+    super( 
+        "Turab Eybaliyev", 
+        "Working...",
+        "Java Developer",
+        List.of(
+            "OOP", "Design Patterns", "Algorithms & Data Structures", "Java", "Spring framework (Core, Boot, MVC, Data JPA, Security)", 
+            "Apache Kafka", "RabbitMQ", "OAuth2", "Hibernate",
+            "Swagger", "Zipkin", "Prometheus","Grafana", "JUnit, Mockito", "Maven", "Gradle"
+        ),
+        Map.of(
+            "github", "https://github.com/tur4b",
+            "linkedin", "https://www.linkedin.com/in/turab-eybaliyev"
+        )
+    );
+  }
+
+  public static Tur4b getInstance() {
+    if (instance == null) {
+      synchronized (Tur4b.class) {
+        if (instance == null) {
+          instance = new Tur4b();
+        }
+      }
+    }
+    return instance;
+  }
+
+  public boolean isCurious() { return true; }
+  public boolean isProblemSolver() { return true; }
+  public boolean lovesCleanCode() { return true; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Tur4b tur4b = Tur4b.getInstance();
+        System.out.println("write your command to proceed");
+        // tur4b.profile();
+        // tur4b.skills();
+        
+    }
+}
+
