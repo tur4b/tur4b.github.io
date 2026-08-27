@@ -1,47 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/script.js"></script>
-    <title>Tur4b</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turab Eybaliyev — Backend Java Developer</title>
+  <meta name="description" content="Backend-focused Java Developer with 2+ years of experience building scalable, data-intensive systems with Java 17+ and the Spring ecosystem." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tur4b.github.io" />
+  <meta property="og:title" content="Turab Eybaliyev — Backend Java Developer" />
+  <meta property="og:description" content="Backend-focused Java Developer specializing in scalable Java/Spring systems, cloud-native AWS, and event-driven architectures." />
+  <meta property="og:image" content="https://tur4b.github.io/assets/profile.jpg" />
+  <!-- Favicon (accent-colored SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='16' y='23' font-size='18' font-family='system-ui' font-weight='700' text-anchor='middle' fill='rgb(52,211,153)'>tur4b</text></svg>" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Devicon for skill icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
 
-    <div class="container-wrapper">
-            <div class="left-panel">
-                <div class="infrastructure"></div>
-                <div class="infra-footer hljs-special"></div>
-            </div>
+  <!-- Custom cursor -->
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
 
-        <div class="main">
-            <div class="container">
-                <div class="gradient">
-                    <div class="content">
-                        <div class="data"></div>
-                        <div class="console bounce">
-                            <header>
-                                <p id="console-header"></p>
-                            </header>
-                            <div class="consolebody">
-                                <p id="console-commands" class="space-2"></p>
-                                <p id="console-shown" class="space-3"></p>
-                                <span class="hljs-special">@tur4b >> </span></strong>
-                                <input id="command-id" class="command space-1 hljs-special" type="text" value="" placeholder="" autofocus/>
-                            </div>
-                            <div id="command-error" class="color-red mg-b-10 hidden"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo" aria-label="Home">tur4b</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="#about" data-section="about">About</a>
+      <a href="#experience" data-section="experience">Experience</a>
+      <a href="#skills" data-section="skills">Skills</a>
+      <a href="#contact" data-section="contact">Contact</a>
+    </nav>
+    <div class="nav-social" aria-label="Social links">
+      <a href="https://www.linkedin.com/in/turab-eybaliyev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://medium.com/@turabeybaliyev" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
 
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" aria-label="Introduction">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-label">Available for opportunities</div>
+          <h1 class="hero-name">Turab Eybaliyev</h1>
+          <div class="hero-role-wrap">
+            <span id="typewriter" aria-live="polite" aria-atomic="true"></span>
+            <span class="cursor-blink" aria-hidden="true"></span>
+          </div>
+          <p class="hero-tagline">Building scalable, data-intensive systems with Java 17+ and the Spring ecosystem.</p>
+          <div class="hero-ctas">
+            <a href="#experience" class="btn btn-primary">View Experience</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-photo-wrap" aria-hidden="true">
+          <div class="hero-photo" id="hero-photo">
+            <img
+              src="assets/profile.jpg"
+              alt="Turab Eybaliyev"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+            />
+            <div class="initials-placeholder" style="display:none">tur4b</div>
+            <div class="photo-ring"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">scroll</div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" aria-label="About me">
+      <div class="section">
+        <div class="section-label">Who I am</div>
+        <h2 class="section-title">About Me</h2>
+        <p class="about-intro reveal">
+          Backend-focused Java Developer with 2+ years of professional experience building scalable,
+          data-intensive systems using Java 17+ and the Spring ecosystem.
+        </p>
+        <div class="highlight-cards" id="highlight-cards">
+
+          <div class="highlight-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            </div>
+            <h3>RESTful API Design</h3>
+            <p>Design and implement RESTful APIs with a focus on clean contract design, proper error handling, and maintainability.</p>
+          </div>
+
+          <div class="highlight-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 6H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5 9H4v-2h11v2zm5-4H4V8h16v3z"/></svg>
+            </div>
+            <h3>Database & Persistence</h3>
+            <p>Build and optimize persistence layers using PostgreSQL, MongoDB, and Redis — including query tuning, indexing strategies, and transaction management.</p>
+          </div>
+
+          <div class="highlight-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            </div>
+            <h3>Event-Driven Architecture</h3>
+            <p>Implement async workflows using Apache Kafka and RabbitMQ to decouple services and improve system throughput.</p>
+          </div>
+
+          <div class="highlight-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            </div>
+            <h3>API Security</h3>
+            <p>Secure APIs using Spring Security, JWT, and OAuth 2.0 with role-based access control and token lifecycle management.</p>
+          </div>
+
+          <div class="highlight-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+            </div>
+            <h3>Cloud-Native AWS</h3>
+            <p>Deploy cloud-native solutions on AWS (Lambda, DynamoDB, SQS, SES, S3) with containerized workloads via Docker and Kubernetes.</p>
+          </div>
+
+          <div class="highlight-card reveal">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            </div>
+            <h3>Clean Code & Testing</h3>
+            <p>Write thoroughly tested, production-ready code grounded in OOP, SOLID principles, and clean architecture patterns.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section id="experience" aria-label="Work experience">
+      <div class="section">
+        <div class="section-label">Where I've worked</div>
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline" id="timeline" aria-label="Career timeline">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" aria-label="Technical skills">
+      <div class="section">
+        <div class="section-label">What I work with</div>
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+
+          <div class="skill-category reveal">
+            <h3>Core Programming</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-java-plain"></i> Java</span>
+              <span class="skill-pill">OOP</span>
+              <span class="skill-pill">SOLID</span>
+              <span class="skill-pill">Design Patterns</span>
+              <span class="skill-pill">DSA</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Spring Ecosystem</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-spring-plain"></i> Spring Boot</span>
+              <span class="skill-pill">Spring Core</span>
+              <span class="skill-pill">Spring AOP</span>
+              <span class="skill-pill">Spring Data</span>
+              <span class="skill-pill">Spring Security</span>
+              <span class="skill-pill">Spring Cloud</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Web Services</h3>
+            <div class="skill-pills">
+              <span class="skill-pill">RESTful API</span>
+              <span class="skill-pill">JWT / OAuth 2.0</span>
+              <span class="skill-pill">OpenAPI</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Database & ORM</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+              <span class="skill-pill"><i class="devicon-mysql-plain"></i> MySQL</span>
+              <span class="skill-pill">Oracle DB</span>
+              <span class="skill-pill"><i class="devicon-redis-plain"></i> Redis</span>
+              <span class="skill-pill">Elasticsearch</span>
+              <span class="skill-pill"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+              <span class="skill-pill">DynamoDB</span>
+              <span class="skill-pill">JPA / Hibernate</span>
+              <span class="skill-pill">Liquibase</span>
+              <span class="skill-pill">Flyway</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Message Brokers</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-apachekafka-original"></i> Apache Kafka</span>
+              <span class="skill-pill"><i class="devicon-rabbitmq-original"></i> RabbitMQ</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Testing</h3>
+            <div class="skill-pills">
+              <span class="skill-pill">JUnit 5</span>
+              <span class="skill-pill">Mockito</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>DevOps & Tools</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-git-plain"></i> Git</span>
+              <span class="skill-pill"><i class="devicon-gradle-plain"></i> Gradle</span>
+              <span class="skill-pill"><i class="devicon-maven-plain"></i> Maven</span>
+              <span class="skill-pill"><i class="devicon-docker-plain"></i> Docker</span>
+              <span class="skill-pill"><i class="devicon-kubernetes-plain"></i> Kubernetes</span>
+              <span class="skill-pill"><i class="devicon-jenkins-line"></i> Jenkins</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Monitoring & Observability</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-prometheus-original"></i> Prometheus</span>
+              <span class="skill-pill">OpenTelemetry</span>
+              <span class="skill-pill">Micrometer</span>
+              <span class="skill-pill"><i class="devicon-grafana-original"></i> Grafana</span>
+              <span class="skill-pill">Zipkin</span>
+              <span class="skill-pill">Jaeger</span>
+              <span class="skill-pill">ELK Stack</span>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <h3>Cloud (AWS)</h3>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="devicon-amazonwebservices-plain-wordmark"></i> Lambda</span>
+              <span class="skill-pill">S3</span>
+              <span class="skill-pill">DynamoDB</span>
+              <span class="skill-pill">SQS</span>
+              <span class="skill-pill">SES</span>
+              <span class="skill-pill">EventBridge</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" aria-label="Contact">
+      <div class="contact-inner">
+        <div class="section-label" style="justify-content:center">Let's connect</div>
+        <h2 class="section-title" style="text-align:center">Get In Touch</h2>
+        <p class="contact-tagline reveal">
+          Open to new opportunities, collaborations, or just a good conversation about backend systems.
+          Reach me on any of the platforms below.
+        </p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/turab-eybaliyev" target="_blank" rel="noopener noreferrer" class="social-btn reveal" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://medium.com/@turabeybaliyev" target="_blank" rel="noopener noreferrer" class="social-btn reveal" aria-label="Medium blog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            Medium
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Turab Eybaliyev &mdash; Built with vanilla HTML, CSS &amp; JS &mdash
+      <a href="https://tur4b.github.io" target="_blank" rel="noopener noreferrer">tur4b.github.io</a>
+    </p>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
-
 </html>
